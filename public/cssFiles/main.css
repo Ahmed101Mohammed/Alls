@@ -1,0 +1,14 @@
+/* style for any element */
+*
+{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+/* style for any input */
+input
+{
+    outline: none;
+    border: none;
+}

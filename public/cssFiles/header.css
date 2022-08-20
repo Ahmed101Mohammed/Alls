@@ -30,8 +30,6 @@ form
         /* search input styel OPEN */
 form input
 {
-    outline: none;
-    border: none;
     height: 35px;
     padding-left: 10px;
     width: 90%;
