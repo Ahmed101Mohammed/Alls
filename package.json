@@ -1,0 +1,26 @@
+{
+  "name": "alls",
+  "version": "1.0.0",
+  "description": "E-commerce online shop for selling and pay products from anyone.",
+  "main": "main.js",
+  "scripts": {
+    "test": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmed101Mohammed/Alls.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "online_shop",
+    "shop",
+    "selling_product",
+    "pay_product"
+  ],
+  "author": "Ahmed Mohamed Al-3adl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmed101Mohammed/Alls/issues"
+  },
+  "homepage": "https://github.com/Ahmed101Mohammed/Alls#readme"
+}
