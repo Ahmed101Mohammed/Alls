@@ -5,6 +5,7 @@ body
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: flex-start;
 }
 
     /* main part of the home page style OPEN */
@@ -21,6 +22,13 @@ main div.category
     height: 250px;
     padding: 10px;
 }
+            /* category title style OPEN */
+main div.category h2.title
+{
+    font-family: monospace;
+    font-size: 22px;
+}
+            /* category title style CLOSE */
         /* catogery style CLOSE */
     /* main part of the home page style CLOSE */
 /* body style CLOSE */
