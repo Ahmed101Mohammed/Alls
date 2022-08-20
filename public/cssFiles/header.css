@@ -1,0 +1,10 @@
+
+/* header style Open */
+header {
+    width: 100%;
+    padding: 20px;
+    padding-left: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
