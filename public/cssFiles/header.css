@@ -6,12 +6,55 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: aquamarine;
 }
 
     /* webSite title styel OPEN */
 h1
 {
     font-family: 'DynaPuff', cursive;
+    color: blueviolet;
 }
     /* webSite title styel CLOSE */
+
+    /* search form style OPEN */
+form
+{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+        /* search input styel OPEN */
+form input
+{
+    outline: none;
+    border: none;
+    height: 35px;
+    padding-left: 10px;
+    width: 90%;
+    font-size: 16px;
+    font-family: 'DynaPuff', cursive;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+        /* search input styel CLOSE */
+
+        /* search icon styel OPEN */
+form i
+{
+    color: blueviolet;
+    font-size: 21px;
+    width: 10%;
+    text-align: center;
+    height: 35px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-color: darkseagreen;
+    cursor: pointer;
+}
+        /* search icon styel CLOSE */
+
+    /* search form style CLOSE */
 /* header style CLOSE */
