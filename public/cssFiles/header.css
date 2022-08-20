@@ -3,10 +3,12 @@ header {
     width: 100%;
     padding: 20px;
     padding-left: 30px;
+    padding-right: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: aquamarine;
+    height: 80px;
 }
 
     /* webSite title styel OPEN */
@@ -57,4 +59,25 @@ form i
         /* search icon styel CLOSE */
 
     /* search form style CLOSE */
+
+    /* sign button style OPEN */
+header div
+{
+    height: 100%;
+    width: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8ca3a34a;
+    color: blueviolet;
+    cursor: pointer;
+    font-size: 18px;
+}
+        /* sign button hover style OPEN */
+header div:hover
+{
+    background-color: #8ca3a36b;
+}
+        /* sign button hover style CLOSE */
+    /* sign button style CLOSE */
 /* header style CLOSE */
