@@ -1,0 +1,26 @@
+/* body style OPEN */
+
+body
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    /* main part of the home page style OPEN */
+
+main
+{
+    width: 90%;
+    padding-top: 20px;
+}
+        /* catogery style OPEN */
+main div.category
+{
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+}
+        /* catogery style CLOSE */
+    /* main part of the home page style CLOSE */
+/* body style CLOSE */
