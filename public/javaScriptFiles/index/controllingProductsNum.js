@@ -1,57 +1,95 @@
 // In this file the scripting determines the number of products in the Categories parts.
 
-// repeateProducts: this function take num and element: it and the copies of this elemet to the original element and return it.
-const repeateProducts = (num,e)=>{
-
-    let elements = '';
-
-    for(let i = 0; i < num; i++)
+// class category: had the index and num atributes.
+class category{
+    constructor()
     {
-        elements += e;
+        this.index = 0;
+        this.num = 0;
+    }
+}
+
+let categoriesObjects = []; // this variabel save all category objects created.
+
+// indexsTarget: this function give me the indexs of the pruducts thats will be view.
+const indexsTarget = (index,num)=>{
+    let start = (index % 20) -1;
+
+    if (start < 0)
+    {
+        start = 20 + start;
     }
 
-    return elements
+    let indexs = [];
+    for(let i = 0; i < num; i++)
+    {
+        start = (start >= 0)? start:20 + start;
+        console.log({start});
+        indexs.push(start);
+        start--;
+    }
+    return indexs;
+}
+
+// repeateProducts: this function take num and element: it and the copies of this elemet to the original element and return it.
+const repeateProducts = ()=>{
+    let elements = [];
+
+    for(let i = 0; i < 20; i++)
+    {
+        elements.push(`
+                            <!-- product card -->
+                            <div class="product">
+
+                                <!-- product photo -->
+                                <div class="photo">
+                                    <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg" alt="canone camera">
+                                </div>
+
+                                <!-- product details -->
+                                <div class="details">
+                                    <!-- product title -->
+                                    <h3 class="title">product title${i+1}</h3>
+
+                                    <!-- product rate-->
+                                    <div class="rate">
+                                        <i class="fa-solid fa-star s1"></i>
+                                        <i class="fa-solid fa-star s2"></i>
+                                        <i class="fa-solid fa-star s3"></i>
+                                        <i class="fa-solid fa-star s4"></i>
+                                        <i class="fa-solid fa-star s5"></i>
+                                    </div>
+
+                                    
+                                    <span class="avilable">avilable</span>
+                                    <span class="price">50$</span>
+                                </div>
+
+                            </div>
+                        `);
+    }
+
+    return elements;
 }
 
 // generateProducts: this function take containers and number: it generate products the containers wiht the numper of repeatetion = num in all container. 
-const generateProducts = (num,containers)=>{
+const generateProducts = (index,num,containers)=>{
 
-    let product = `
-                    <!-- product card -->
-                    <div class="product">
-
-                        <!-- product photo -->
-                        <div class="photo">
-                            <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg" alt="canone camera">
-                        </div>
-
-                        <!-- product details -->
-                        <div class="details">
-                            <!-- product title -->
-                            <h3 class="title">product title</h3>
-
-                            <!-- product rate-->
-                            <div class="rate">
-                                <i class="fa-solid fa-star s1"></i>
-                                <i class="fa-solid fa-star s2"></i>
-                                <i class="fa-solid fa-star s3"></i>
-                                <i class="fa-solid fa-star s4"></i>
-                                <i class="fa-solid fa-star s5"></i>
-                            </div>
-
-                            
-                            <span class="avilable">avilable</span>
-                            <span class="price">50$</span>
-                        </div>
-
-                    </div>
-                `
-    let products = repeateProducts(num,product);
-
+    
+    let products = repeateProducts();
+    let indexs = indexsTarget(index,num);
+    //console.log({products,indexs,containers});
     for(let i of containers)
     {
+        let id = i.parentElement.id;
+        categoriesObjects[Number(id)] = new category();
+        categoriesObjects[Number(id)].index = index;
+        categoriesObjects[Number(id)].num = num;
         i.innerHTML = '';
-        i.innerHTML += products;
+        for(let j = indexs.length-1 ; j > -1; j--)
+        {
+            i.innerHTML += products[indexs[j]];
+        }
     }
         
 }
@@ -66,37 +104,44 @@ const changeProductsWidth = (num, products)=>{
 const reViewProduct = ()=>{
     if(window.innerWidth > 1650)
     {
-        generateProducts(7,productsContainers());
+        const productsNum = 7;
+        generateProducts(productsNum,7,productsContainers());
         changeProductsWidth(7,containerProducts());
     }
     else if(window.innerWidth > 1530)
     {
-        generateProducts(6,productsContainers());
+        const productsNum = 6;
+        generateProducts(productsNum,6,productsContainers());
         changeProductsWidth(6,containerProducts());
     }
     else if(window.innerWidth > 1200)
     {
-        generateProducts(5,productsContainers());
+        const productsNum = 5;
+        generateProducts(productsNum,5,productsContainers());
         changeProductsWidth(5,containerProducts());
     }
     else if(window.innerWidth > 1000)
     {
-        generateProducts(4,productsContainers());
+        const productsNum = 4;
+        generateProducts(productsNum,4,productsContainers());
         changeProductsWidth(4,containerProducts());
     }
     else if(window.innerWidth > 730)
     {
-        generateProducts(3,productsContainers());
+        const productsNum = 3;
+        generateProducts(productsNum,3,productsContainers());
         changeProductsWidth(3,containerProducts());
     }
     else if(window.innerWidth > 455)
     {
-        generateProducts(2,productsContainers());
+        const productsNum = 2;
+        generateProducts(productsNum,2,productsContainers());
         changeProductsWidth(2,containerProducts());
     }
     else if(window.innerWidth < 455)
     {
-        generateProducts(1,productsContainers());
+        const productsNum = 1;
+        generateProducts(productsNum,1,productsContainers());
         changeProductsWidth(1,containerProducts());
     }
 

@@ -14,7 +14,6 @@ const disappearAngles = (e)=>{
     let lAngle = e.currentTarget.querySelector('.left-angle');
     rAngle.style.display = 'none';
     lAngle.style.display = 'none';
-    console.log('why')
 }
 
 // giveEvents : this function giv all categories in home page this events mouseover ==> appearAngles, mouseout ==> disappearAngles.
