@@ -22,6 +22,7 @@ main div.category
     height: 310px;
     padding: 10px;
     margin-bottom: 20px;
+    position: relative;
 }
             /* category title style OPEN */
 main div.category h2.title
@@ -39,8 +40,41 @@ main div.category div.container
     height: 100%;
     display: flex;
 }
-            /* products container OPEN */
+            /* products container CLOSE */
 
+            /* angle tight style OPEN */
+main div.category div.right-angle
+{
+    position: absolute;
+    top: 12%;
+    right: 0px;
+    height: 92%;
+    display: flex;
+    align-items: center;
+    background-color: #00ffff36;
+    padding: 8px;
+    color: darkgrey;
+    cursor: pointer;
+    display: none;
+}
+            /* angle tight style CLOSE */
+
+/* angle tight style OPEN */
+main div.category div.left-angle
+{
+    position: absolute;
+    top: 12%;
+    left: 0px;
+    height: 92%;
+    display: flex;
+    align-items: center;
+    background-color: #00ffff36;
+    padding: 8px;
+    color: darkgrey;
+    cursor: pointer;
+    display: none;
+}
+            /* angle tight style CLOSE */
         /* catogery style CLOSE */
     /* main part of the home page style CLOSE */
 /* body style CLOSE */
