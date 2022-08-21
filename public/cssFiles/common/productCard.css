@@ -1,0 +1,116 @@
+/* product card style OPEN */
+div.product
+{
+    height: 100%;
+    width: calc(100%/5);
+    padding: 5px;
+    cursor: pointer;
+    background-color: #f9eeff;
+    margin-right: 10px;
+}
+
+    /* product photo style OPEN */
+div.product div.photo
+{
+    width: 100%;
+    height: 60%;
+}
+
+        /* img style OPEN */
+div.product div.photo img
+{
+    width: 100%;
+    height: 100%;
+}
+        /* img style CLOSE */
+
+    /* product photo style CLOSE */
+
+    /* product details styel OPEN */
+div.product div.details
+{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 7px 2px;
+    padding: 5px;
+}
+
+        /* product title style OPEN */
+div.product div.details h3.title
+{
+    grid-column: 1 / 3;
+    font-family: 'Aboreto', cursive;
+    
+}
+        /* product title style CLOSE */
+
+        /* product rate style OPEN */
+div.product div.details div.rate
+{
+    grid-column: 1 / 3;
+    color: #d1c5c5;
+    background-color: #f3ec78;
+    background-image: linear-gradient(to right, gold 90%, #d1c5c5 90%, #d1c5c5 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    padding: 2px 0px;
+    height: 22px;
+    width: 108px;
+}
+            /* product rate icons style OPEN */
+/* div.product div.details div.rate i.s1
+{
+    color:gold;
+}
+
+div.product div.details div.rate i.s2
+{
+    color:gold;
+}
+
+div.product div.details div.rate i.s3
+{
+    color:gold;
+}
+
+div.product div.details div.rate i.s4
+{
+    color:gold;
+}
+
+div.product div.details div.rate i.s5
+{
+    color:gold;
+} */
+            /* product rate icons style CLOSE */
+
+        /* product rate style CLOSE */
+
+        /* product avilable style OPEN */
+div.product div.details span.avilable
+{
+    background-color: #6cffdb;
+    display: block;
+    padding: 3px 0px;
+    text-align: center;
+    color: #ff00c5;
+    font-size: 17px;
+    font-family: sans-serif;
+}
+        /* product avilable style CLOSE */
+
+        /* product price style OPEN */
+div.product div.details span.price
+{
+    text-align: center;
+    display: block;
+    padding: 5px;
+    color: darkgreen;
+}
+        /* product price style CLOSE */
+    /* product details styel CLOSE */
+/* product card style CLOSE */

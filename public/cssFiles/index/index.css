@@ -19,8 +19,9 @@ main
 main div.category
 {
     width: 100%;
-    height: 250px;
+    height: 310px;
     padding: 10px;
+    margin-bottom: 20px;
 }
             /* category title style OPEN */
 main div.category h2.title
@@ -29,6 +30,17 @@ main div.category h2.title
     font-size: 22px;
 }
             /* category title style CLOSE */
+
+            /* products container OPEN */
+main div.category div.container
+{
+    width: 100%;
+    padding: 3px 2px;
+    height: 100%;
+    display: flex;
+}
+            /* products container OPEN */
+
         /* catogery style CLOSE */
     /* main part of the home page style CLOSE */
 /* body style CLOSE */
