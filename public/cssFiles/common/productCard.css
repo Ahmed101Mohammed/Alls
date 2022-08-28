@@ -6,6 +6,15 @@ div.product
     cursor: pointer;
     background-color: #f9eeff;
     margin-right: 10px;
+    display: block;
+    margin-left: 0px;
+    -webkit-transition: .6s;
+    -moz-transition: .6s;
+    -ms-transition: .6s;
+    -o-transition: .6s;
+    transition: .6s;
+    transition-duration: margin-left;
+
 }
 
     /* product photo style OPEN */
@@ -113,3 +122,89 @@ div.product div.details span.price
         /* product price style CLOSE */
     /* product details styel CLOSE */
 /* product card style CLOSE */
+
+/* positions class */
+.l1
+{
+    
+    margin-left: -100% !important;
+}
+
+.l2
+{
+    
+    margin-left: -50% !important;
+}
+
+.l3
+{
+    
+    margin-left: -33.3% !important;
+}
+
+.l4
+{
+    
+    margin-left: -25% !important;
+}
+
+.l5
+{
+    
+    margin-left: -20% !important;
+}
+
+.l6
+{
+    
+    margin-left: -16.6% !important;
+}
+
+.l7
+{
+    
+    margin-left: -14.4% !important;
+}
+
+    /* without minus */
+.lp1
+{
+    
+    margin-right: -100% !important;
+}
+
+.lp2
+{
+    
+    margin-right: -50% !important;
+}
+
+.lp3
+{
+    
+    margin-right: -33.3% !important;
+}
+
+.lp4
+{
+    
+    margin-right: -25% !important;
+}
+
+.lp5
+{
+    
+    margin-right: -20% !important;
+}
+
+.lp6
+{
+    
+    margin-right: -16.6% !important;
+}
+
+.lp7
+{
+    
+    margin-right: -14.4% !important;
+}

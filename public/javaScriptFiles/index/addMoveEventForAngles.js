@@ -5,12 +5,12 @@ const moveProductsPlus = (e)=>{
     let id = e.currentTarget.parentElement.id;
     let containerData = categoriesObjects[Number(id)];
     let container = e.currentTarget.parentElement.querySelector('div.container');
-    generateProducts(containerData.index + 1,containerData.num,[container]);
+    //generateProducts(containerData.index + 1,containerData.num,[container]);
+    moveRight(containerData,container);
 }
 
 // addEventToAllRA: add moveProductsPlus event to all right angles.
 const addEventToAllRA = (angels)=>{
-    console.log(angels);
     for(let i of angels)
     {
         i.addEventListener('click',moveProductsPlus);
@@ -22,12 +22,12 @@ const moveProductsMinus = (e)=>{
     let id = e.currentTarget.parentElement.id;
     let containerData = categoriesObjects[Number(id)];
     let container = e.currentTarget.parentElement.querySelector('div.container');
-    generateProducts(containerData.index - 1,containerData.num,[container]);
+    //generateProducts(containerData.index - 1,containerData.num,[container]);
+    moveLeft(containerData,container);
 }
 
 // addEventToAllLA: add moveProductsMinus event to all left angles.
 const addEventToAllLA = (angels)=>{
-    console.log(angels);
     for(let i of angels)
     {
         i.addEventListener('click',moveProductsMinus);

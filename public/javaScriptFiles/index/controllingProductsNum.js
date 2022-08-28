@@ -7,6 +7,16 @@ class category{
         this.index = 0;
         this.num = 0;
     }
+
+    plusIndex()
+    {
+        this.index++;
+    }
+
+    muinsIndex()
+    {
+        this.index--;
+    }
 }
 
 let categoriesObjects = []; // this variabel save all category objects created.
@@ -24,7 +34,6 @@ const indexsTarget = (index,num)=>{
     for(let i = 0; i < num; i++)
     {
         start = (start >= 0)? start:20 + start;
-        console.log({start});
         indexs.push(start);
         start--;
     }
@@ -94,6 +103,88 @@ const generateProducts = (index,num,containers)=>{
         
 }
 
+// chose class name
+const choseClass = (num)=>{
+    switch(num){
+        case 1:
+            return 'l1';
+        case 2:
+            return 'l2';
+        case 3:
+            return 'l3';
+        case 4:
+            return 'l4';
+        case 5:
+            return 'l5';
+        case 6:
+            return 'l6';
+        case 7:
+            return 'l7';
+    }
+}
+
+// chose class name
+const choseClassL = (num)=>{
+    switch(num){
+        case 1:
+            return 'lp1';
+        case 2:
+            return 'lp2';
+        case 3:
+            return 'lp3';
+        case 4:
+            return 'lp4';
+        case 5:
+            return 'lp5';
+        case 6:
+            return 'lp6';
+        case 7:
+            return 'lp7';
+    }
+}
+// generateProducts: this function take containers and number: it generate products the containers wiht the numper of repeatetion = num in all container. 
+const moveRight = (containerObject,container)=>{
+    let products = repeateProducts();
+    containerObject.plusIndex();
+    let index = (containerObject.index % 20) - 1;
+    index = (index < 0)? 20 + index: index;
+
+    container.innerHTML+=products[index];
+
+    let num = containerObject.num;
+
+    setTimeout(()=>{
+        container.firstChild.nextElementSibling.classList.add(choseClass(num));
+    },0);
+    setTimeout(()=>{
+        container.firstChild.nextElementSibling.style.display = 'none';
+        container.firstChild.nextElementSibling.remove();
+    },600)
+       
+}
+
+// generateProducts: this function take containers and number: it generate products the containers wiht the numper of repeatetion = num in all container. 
+const moveLeft = (containerObject,container)=>{
+    let products = repeateProducts();
+    containerObject.muinsIndex();
+
+    let num = containerObject.num;
+    let index = (containerObject.index % 20)-num;
+    index = (index < 0)? 20 + index: index;
+
+    let containerElements = products[index] + container.innerHTML;
+
+    container.innerHTML= containerElements;
+        
+    setTimeout(()=>{
+        container.lastChild.previousElementSibling.classList.add(choseClassL(num));
+    },0);
+    setTimeout(()=>{
+        container.lastChild.previousElementSibling.style.display = 'none';
+        container.lastChild.previousElementSibling.remove();
+    },600)
+       
+}
 // changeProductsWidth: this function take num and all products and resize the width of products to equal : 100%/n;
 const changeProductsWidth = (num, products)=>{
     for(let i of products)
