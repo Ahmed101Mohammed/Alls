@@ -47,9 +47,59 @@
         </form>
 
         <!-- sign button -->
-        <div>Sign</div>
+        <div class="sign">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Sign
+        </div>
+
+        <!-- sign out -->
+        <div class="sign-out none">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sign Out
+        </div>
+
+        <!-- cart -->
+        <div class="cart none">
+            <span>0</span>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+
+        <!-- personal page -->
+        <div class="personal-page none">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <!-- nave par appear when the window size being small less than 600px -->
+        <div class="nav-phone">
+            <span class="first"></span>
+            <span class="middle"></span>
+            <span class="last"></span>
+        </div>
 
     </header>
+
+    <!-- phone version nav-par -->
+    <nav class="none-nav">
+        <ul>
+            <li class="my-page none">
+                <i class="fa-solid fa-user"></i>
+                Personal page
+            </li>
+
+            <li class="cart none">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Cart
+            </li>
+            <li class="sign">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Sign
+            </li>
+            <li class="sign-out none">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sign Out
+            </li>
+            
+        </ul>
+    </nav>
 
     <!-- main part of the page -->
     <main>
@@ -160,5 +210,6 @@
     <script src="/javaScriptFiles/index/controllingProductsNum.js"></script>
     <script src="/javaScriptFiles/index/controllingCAnglesApearavce.js"></script>
     <script src="/javaScriptFiles/index/addMoveEventForAngles.js"></script>
+    <script src="/javaScriptFiles/header.js"></script>
 </body>
 </html>

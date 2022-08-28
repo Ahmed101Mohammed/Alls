@@ -5,7 +5,7 @@ const moveProductsPlus = (e)=>{
     let id = e.currentTarget.parentElement.id;
     let containerData = categoriesObjects[Number(id)];
     let container = e.currentTarget.parentElement.querySelector('div.container');
-    //generateProducts(containerData.index + 1,containerData.num,[container]);
+    
     moveRight(containerData,container);
 }
 
@@ -22,7 +22,7 @@ const moveProductsMinus = (e)=>{
     let id = e.currentTarget.parentElement.id;
     let containerData = categoriesObjects[Number(id)];
     let container = e.currentTarget.parentElement.querySelector('div.container');
-    //generateProducts(containerData.index - 1,containerData.num,[container]);
+
     moveLeft(containerData,container);
 }
 

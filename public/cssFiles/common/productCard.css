@@ -14,6 +14,7 @@ div.product
     -o-transition: .6s;
     transition: .6s;
     transition-duration: margin-left;
+    width: auto;
 
 }
 

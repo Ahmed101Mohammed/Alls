@@ -12,3 +12,10 @@ input
     outline: none;
     border: none;
 }
+
+/* style for any unorder list */
+ul
+{
+    list-style-position: inside;
+    list-style: none;
+}

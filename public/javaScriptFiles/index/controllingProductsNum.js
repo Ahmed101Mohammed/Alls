@@ -150,8 +150,9 @@ const moveRight = (containerObject,container)=>{
     index = (index < 0)? 20 + index: index;
 
     container.innerHTML+=products[index];
-
+    
     let num = containerObject.num;
+    container.lastChild.previousElementSibling.style.width = `${100/num}%`;
 
     setTimeout(()=>{
         container.firstChild.nextElementSibling.classList.add(choseClass(num));
@@ -176,6 +177,8 @@ const moveLeft = (containerObject,container)=>{
 
     container.innerHTML= containerElements;
         
+    container.firstChild.nextElementSibling.style.width = `${100/num}%`
+
     setTimeout(()=>{
         container.lastChild.previousElementSibling.classList.add(choseClassL(num));
     },0);
