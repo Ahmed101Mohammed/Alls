@@ -22,7 +22,7 @@ app.use(require('./middlewares/readReqs.js'))
 
 // routers:
 app.use(require('./routers/home.js'));
-
+app.use('/sign',require(path.join(__dirname,'routers','sign.js')));
 // run server:
 const port = process.env.PORT || 8000;
 server.listen(port,()=>{

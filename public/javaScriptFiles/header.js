@@ -4,6 +4,7 @@ const firstSpan = document.querySelector('header .nav-phone .first');
 const middleSpan = document.querySelector('header .nav-phone .middle');
 const lastSpan = document.querySelector('header .nav-phone .last');
 const navPar = document.querySelector('header+nav');
+const signButton = document.querySelector('header div.sign');
 
 // resize middleSpan function: 
 const resize = ()=>{
@@ -49,9 +50,18 @@ const appDis  = ()=>{
     }
 }
 
+//open sign page function
+const openSignPage = ()=>{
+    window.open('/sign','_self')
+} 
+
+
 // Add hover ListenerEvent for navPhone element:
 navPhone.addEventListener('mouseover',resize);
 navPhone.addEventListener('mouseout',orignSize);
 
 // Add click ListenerEvent for navPhone element:
-navPhone.addEventListener('click',appDis)
+navPhone.addEventListener('click',appDis);
+
+// Add click listenerEvent for sign button:
+signButton.addEventListener('click',openSignPage)

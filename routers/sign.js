@@ -1,12 +1,11 @@
-// modules:
+// modules
 const router = require('express').Router();
 const path = require('path');
 
-// routes:
+// routes
 router.route('/')
     .get((req,res)=>{
-        res.sendFile(path.join(__dirname,'..','views','index.html'));
-    });
+        res.sendFile(path.join(__dirname,'..','views','sign.html'))
+    })
 
-// export module:
 module.exports = router;
