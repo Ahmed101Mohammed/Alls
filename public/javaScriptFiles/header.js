@@ -5,7 +5,7 @@ const middleSpan = document.querySelector('header .nav-phone .middle');
 const lastSpan = document.querySelector('header .nav-phone .last');
 const navPar = document.querySelector('header+nav');
 const signButton = document.querySelector('header div.sign');
-
+const signButtonPhoneVersion = document.querySelector('header+nav ul li.sign');
 // resize middleSpan function: 
 const resize = ()=>{
     setTimeout(()=>{
@@ -65,3 +65,6 @@ navPhone.addEventListener('click',appDis);
 
 // Add click listenerEvent for sign button:
 signButton.addEventListener('click',openSignPage)
+
+// Add click listenerEvent for sign button in phone version:
+signButtonPhoneVersion.addEventListener('click',openSignPage)
