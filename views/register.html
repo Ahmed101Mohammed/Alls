@@ -10,11 +10,42 @@
 
         <!-- main styles for any page -->
         <link rel="stylesheet" href="/cssFiles/main.css">
-        
+
         <!-- title of the page -->
         <title>Alls: register</title>
     </head>
     <body>
-        
+        <!-- register form -->
+        <form>
+
+            <!-- user name part -->
+            <fieldset class="user-name">
+                <label for="user-name" >User Name:</label>
+                <input id="user-name" placeholder="Enter your user name" type="text" required>
+                <i class="fa-solid fa-user"></i> 
+            </fieldset>
+
+            <!-- Email part -->
+            <fieldset class="email">
+                <label for="email" >Email:</label>
+                <input id="email" placeholder="Enter your Email" type="email" required>
+                <i class="fa-solid fa-envelope"></i>
+            </fieldset>
+            
+            <!-- user pssw part -->
+            <fieldset class="pssw">
+                <label for="pssw" >Password:</label>
+                <input id="pssw" placeholder="Enter your password" type="text" required>
+                <i class="fa-solid fa-key"></i>
+            </fieldset>
+
+            <hr/>
+
+            <!-- reqgister and log in part -->
+            <fieldset class="register">
+                <div class="register">Register</div>
+            </fieldset>
+            
+        </form>
     </body>
 </html>
