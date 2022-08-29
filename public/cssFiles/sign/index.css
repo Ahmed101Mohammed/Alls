@@ -116,3 +116,50 @@ form fieldset.register div:hover
         /* register button style CLOSE */
     /* register and login fieldset style CLOSE */
 /* form style CLOSE */
+
+/* max-width: 200px */
+@media (max-width: 200px) 
+{
+        /* form inputs icons style OPEN */
+    form fieldset i
+    {
+       display: none !important;
+    }
+        /* form inputs icons  style CLOSE */
+
+        /* form inputs style OPEN */
+    form fieldset input
+    {
+        width: 100%;
+    }
+        /* form inputs style CLOSE */
+}
+
+/* media queries */
+    /* max 400px */
+@media (max-width:400px) 
+{
+    /* form style OPEN */
+    form
+    {
+        height: 335px;
+        position: relative;
+    }
+
+        
+        /* refister fieldset style OPEN */
+    form fieldset.register
+    {
+        display: block;
+    }
+            /* register linke style OPEN */
+    form fieldset.register a
+    {
+        position: absolute;
+        bottom: 65px;
+    }
+            /* register linke style CLOSE */
+        /* refister fieldset style CLOSE */
+    /* form style CLOSE */
+}
+
