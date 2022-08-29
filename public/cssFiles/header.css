@@ -9,6 +9,8 @@ header {
     align-items: center;
     background-color: aquamarine;
     height: 80px;
+    position: fixed;
+    z-index: 1;
 }
 
     /* webSite title styel OPEN */
