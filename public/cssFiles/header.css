@@ -156,7 +156,7 @@ header+nav
     width: 100%;
     height: calc(100% - 80px);
     background-color: #000000e0;
-    top: 80;
+    top: 80px;
     z-index: 1;
 }
     /* ul style OPEN */

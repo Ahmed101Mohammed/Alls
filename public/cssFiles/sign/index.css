@@ -1,0 +1,118 @@
+/* html style OPEN */
+html
+{
+    height: 100%;
+}
+/* html style CLOSE */
+
+/* body style OPEN */
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+/* body style CLOSE */
+
+/* form style OPEN */
+form
+{
+    width: 447px;
+    height: 253px;
+    background-color: aquamarine;
+    padding: 20px;
+}
+
+    /* fieldset style OPEN */
+form fieldset
+{
+    border: none;
+    margin-bottom: 20px;
+}
+        /* labal style OPEN */
+form fieldset label
+{
+    display: block;
+    color: darkmagenta;
+    font-family: monospace;
+    font-size: 17px;
+}
+        /* lebal style CLOSE */
+
+        /* input style OPEN */
+form fieldset input
+{
+    width: 80%;
+    height: 26px;
+    padding: 5px;
+    font-size: 17px;
+    color: darkblue;
+    margin-top: 5px;
+}
+        /* input style CLOSE */
+
+        /* icon style OPEN */
+form fieldset i
+{
+    background-color: #cfe1de;
+    width: 26px;
+    height: 26px;
+    display: inline-flex !important;
+    justify-content: center;
+    line-height: 24px !important;
+    margin-left: -3px;
+    color: blueviolet;
+}
+        /* icon style CLOSE */
+    /* fildset style CLOSE */
+    /* hr style OPEN */
+hr
+{
+    border-top-color: #00ff3f;
+    border-bottom-color: #b6ffaf;
+    margin-bottom: 20px;
+}
+    /* hr style CLOSE */
+    /* register and login fieldset style OPEN */
+form fieldset.register
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+        /* reqister link style OPEN */
+form fieldset.register a
+{
+    color: dimgray;
+    text-decoration: none;
+}
+            /* register link hover style OPEN */
+form fieldset.register a:hover
+{
+    color: purple;
+}
+            /* register link hover style OPEN */
+        /* register link style CLOSE */
+        /* login button style OPEN */
+form fieldset.register div
+{
+    width: 110px;
+    height: 45px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b25fff;
+    color: white;
+    cursor: pointer;
+}
+            /* login button hover effect style OPEN */
+form fieldset.register div:hover
+{
+    background-color: indigo;
+}
+            /* register button hover effect style CLOSE */
+        /* register button style CLOSE */
+    /* register and login fieldset style CLOSE */
+/* form style CLOSE */
