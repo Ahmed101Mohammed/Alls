@@ -46,3 +46,6 @@ const UserSchema = mongoose.Schema({
         type: Array,
     }
 })
+
+// export:
+module.exports = UserSchema;
