@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const env = require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const dataBase =  require(path.join(__dirname,'database','mongoDB.js'));
 // server:
 const app = express();
 const server = require('http').createServer(app);
