@@ -19,7 +19,7 @@ body
 form
 {
     width: 447px;
-    height: 253px;
+    height: auto;
     background-color: aquamarine;
     padding: 20px;
 }
@@ -78,22 +78,9 @@ hr
 form fieldset.register
 {
     display: flex;
-    justify-content: space-between;
     align-items: flex-end;
+    justify-content: end;
 }
-        /* reqister link style OPEN */
-form fieldset.register a
-{
-    color: dimgray;
-    text-decoration: none;
-}
-            /* register link hover style OPEN */
-form fieldset.register a:hover
-{
-    color: purple;
-}
-            /* register link hover style OPEN */
-        /* register link style CLOSE */
         /* login button style OPEN */
 form fieldset.register div
 {
@@ -136,32 +123,5 @@ form fieldset.register div:hover
         width: 100%;
     }
         /* form inputs style CLOSE */
-}
-
-    /* max 400px */
-@media (max-width:400px) 
-{
-    /* form style OPEN */
-    form
-    {
-        height: 335px;
-        position: relative;
-    }
-
-        
-        /* refister fieldset style OPEN */
-    form fieldset.register
-    {
-        display: block;
-    }
-            /* register linke style OPEN */
-    form fieldset.register a
-    {
-        position: absolute;
-        bottom: 65px;
-    }
-            /* register linke style CLOSE */
-        /* refister fieldset style CLOSE */
-    /* form style CLOSE */
 }
 
