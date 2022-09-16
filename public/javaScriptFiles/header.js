@@ -1,54 +1,72 @@
-// Dom elements:
-const navPhone = document.querySelector('header .nav-phone');
-const firstSpan = document.querySelector('header .nav-phone .first');
-const middleSpan = document.querySelector('header .nav-phone .middle');
-const lastSpan = document.querySelector('header .nav-phone .last');
-const navPar = document.querySelector('header+nav');
+// Opjects:
+let phoneVersion = {
+    navParButton: {
+        htmlElement: document.querySelector('header .nav-phone'),
+
+        firstSpan: document.querySelector('header .nav-phone .first'),
+        middleSpan:  document.querySelector('header .nav-phone .middle'),
+        lastSpan: document.querySelector('header .nav-phone .last'),
+
+        returnMiddleSpanToOrginSize: ()=>{
+    
+            setTimeout(()=>{
+                phoneVersion.navParButton.middleSpan.classList.remove('eigty');
+            },0)
+        },
+
+        lessTheWidthOfMiddleSpan: ()=>{
+            setTimeout(()=>{
+                phoneVersion.navParButton.middleSpan.classList.add('eigty');
+            },0)
+        }
+    },
+
+    navPar: {
+        htmlElement: document.querySelector('.navParOfPhoneVersion'),
+        signButton: document.querySelector('header+nav ul li.sign'),
+    },
+
+    appearTheNavPar: ()=>{
+        setTimeout(()=>{
+            phoneVersion.navParButton.firstSpan.classList.add('rotate45');
+            phoneVersion.navParButton.lastSpan.classList.add('rotate-45');
+            phoneVersion.navParButton.middleSpan.classList.add('none')
+        },0)
+
+        setTimeout(()=>{
+            phoneVersion.navPar.htmlElement.classList.remove('none-nav');
+        },200)
+    },
+
+    disappearTheNavPar: ()=>{
+        setTimeout(()=>{
+            phoneVersion.navParButton.firstSpan.classList.remove('rotate45');
+            phoneVersion.navParButton.lastSpan.classList.remove('rotate-45');
+            phoneVersion.navParButton.middleSpan.classList.remove('none');
+        },0)
+
+        setTimeout(()=>{
+            phoneVersion.navPar.htmlElement.classList.add('none-nav');
+        },200)
+    },
+
+    appearAndDisappearTheNavPar: ()=>{
+
+        if(phoneVersion.navPar.htmlElement.classList.contains('none-nav'))
+        {
+            phoneVersion.appearTheNavPar();
+        }
+        else
+        {
+            phoneVersion.disappearTheNavPar();
+        }
+    }
+    
+}
+
+
+// Dom Elements:
 const signButton = document.querySelector('header div.sign');
-const signButtonPhoneVersion = document.querySelector('header+nav ul li.sign');
-// resize middleSpan function: 
-const resize = ()=>{
-    setTimeout(()=>{
-        middleSpan.classList.add('eigty');
-    },0)
-}
-
-// orign size: this function rturn the middleSpan to the origin size:
-const orignSize = ()=>{
-    setTimeout(()=>{
-        middleSpan.classList.remove('eigty');
-    },0)
-}
-
-// Appear navPar and disApear it function:
-const appDis  = ()=>{
-    if(navPar.classList.contains('none-nav'))
-    {
-        setTimeout(()=>{
-            firstSpan.classList.add('rotate45');
-            lastSpan.classList.add('rotate-45');
-            middleSpan.classList.add('none')
-        },0)
-
-        setTimeout(()=>{
-            navPar.classList.remove('none-nav');
-        },200)
-        
-    }
-    else
-    {
-        setTimeout(()=>{
-            firstSpan.classList.remove('rotate45');
-            lastSpan.classList.remove('rotate-45');
-            middleSpan.classList.remove('none');
-        },0)
-
-        setTimeout(()=>{
-            navPar.classList.add('none-nav');
-        },200)
-        
-    }
-}
 
 //open sign page function
 const openSignPage = ()=>{
@@ -56,15 +74,15 @@ const openSignPage = ()=>{
 } 
 
 
-// Add hover ListenerEvent for navPhone element:
-navPhone.addEventListener('mouseover',resize);
-navPhone.addEventListener('mouseout',orignSize);
+// Add hover ListenerEvent for navParControllerInPhoneVersion element:
+phoneVersion.navParButton.htmlElement.addEventListener('mouseover',phoneVersion.navParButton.lessTheWidthOfMiddleSpan);
+phoneVersion.navParButton.htmlElement.addEventListener('mouseout',phoneVersion.navParButton.returnMiddleSpanToOrginSize);
 
-// Add click ListenerEvent for navPhone element:
-navPhone.addEventListener('click',appDis);
+// Add click ListenerEvent for navParControllerInPhoneVersion element:
+phoneVersion.navParButton.htmlElement.addEventListener('click',phoneVersion.appearAndDisappearTheNavPar);
 
 // Add click listenerEvent for sign button:
 signButton.addEventListener('click',openSignPage)
 
 // Add click listenerEvent for sign button in phone version:
-signButtonPhoneVersion.addEventListener('click',openSignPage)
+phoneVersion.navPar.signButton.addEventListener('click',openSignPage)
