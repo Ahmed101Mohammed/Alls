@@ -2,18 +2,18 @@
 
 // appearAngles: this function appear Angles when the mouse hover in the  category section.
 const appearAngles = (e)=>{
-    let rAngle = e.currentTarget.querySelector('.right-angle');
-    let lAngle = e.currentTarget.querySelector('.left-angle');
-    rAngle.style.display = 'flex';
-    lAngle.style.display = 'flex';
+    let rightAngle = e.currentTarget.querySelector('.right-angle');
+    let leftAngle = e.currentTarget.querySelector('.left-angle');
+    rightAngle.style.display = 'flex';
+    leftAngle.style.display = 'flex';
 }
 
 // disappearAngles: this function disappear Angles when the mouse go out from the  category section.
 const disappearAngles = (e)=>{
-    let rAngle = e.currentTarget.querySelector('.right-angle');
-    let lAngle = e.currentTarget.querySelector('.left-angle');
-    rAngle.style.display = 'none';
-    lAngle.style.display = 'none';
+    let rightAngle = e.currentTarget.querySelector('.right-angle');
+    let leftAngle = e.currentTarget.querySelector('.left-angle');
+    rightAngle.style.display = 'none';
+    leftAngle.style.display = 'none';
 }
 
 // giveEvents : this function giv all categories in home page this events mouseover ==> appearAngles, mouseout ==> disappearAngles.

@@ -19,15 +19,6 @@ const appearPreviousPtoduct = (e)=>{
     moveLeft(categoryObject,categoryContainer);
 }
 
-// addClickEventToListOfElements: this functio take list of elements and function and give each element an click evenet that respond the function.
-const addClickEventToListOfElements = (listOfElements,eventFunction)=>{
-    for(let element of listOfElements)
-    {
-        element.addEventListener('click',eventFunction);
-    }
-}
+addEventToListOfElements(rightAngles(),appearNextPtoduct,"click"); // add appearNextProduct function as a click event to all right angles.
 
-
-addClickEventToListOfElements(rightAngles(),appearNextPtoduct); // add appearNextProduct function as a click event to all right angles.
-
-addClickEventToListOfElements(leftAngles(),appearPreviousPtoduct); // add appearPreviousPtoduct function as a click event to all left angles.
+addEventToListOfElements(leftAngles(),appearPreviousPtoduct,"click"); // add appearPreviousPtoduct function as a click event to all left angles.
