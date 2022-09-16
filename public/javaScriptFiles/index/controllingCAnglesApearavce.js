@@ -16,16 +16,7 @@ const disappearAngles = (e)=>{
     leftAngle.style.display = 'none';
 }
 
-// giveEvents : this function giv all categories in home page this events mouseover ==> appearAngles, mouseout ==> disappearAngles.
-const giveEvents = ()=>{
-    let categories = getCategories();
+addEventToListOfElements(getCategories(),appearAngles,"mouseover");
 
-    for(let i of categories)
-    {
-        i.addEventListener('mouseover',appearAngles);
-        i.addEventListener('mouseout',disappearAngles);
-    }
-}
+addEventToListOfElements(getCategories(),disappearAngles,"mouseout");
 
-
-giveEvents();// function run. 
