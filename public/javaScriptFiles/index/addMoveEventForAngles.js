@@ -19,6 +19,6 @@ const appearPreviousPtoduct = (e)=>{
     moveLeft(categoryObject,categoryContainer);
 }
 
-addEventToListOfElements(rightAngles(),appearNextPtoduct,"click"); // add appearNextProduct function as a click event to all right angles.
+addEventToListOfElements(Angles.rightAngles(),appearNextPtoduct,"click"); // add appearNextProduct function as a click event to all right angles.
 
-addEventToListOfElements(leftAngles(),appearPreviousPtoduct,"click"); // add appearPreviousPtoduct function as a click event to all left angles.
+addEventToListOfElements(Angles.leftAngles(),appearPreviousPtoduct,"click"); // add appearPreviousPtoduct function as a click event to all left angles.
