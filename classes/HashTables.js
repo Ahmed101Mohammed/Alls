@@ -2,9 +2,9 @@
 class StringHashMap{
     constructor(string)
     {
-        addString(string);
-
         this.string = [];
+
+        this.addString(string);
     }
 
     add(char)
@@ -23,22 +23,6 @@ class StringHashMap{
         for(let char of string)
         {
             this.add(char);
-        }
-    }
-
-    specialCharsWanted()
-    {
-        for(let i of `!@#$%^&*(){}[]?:;_-`)
-        {
-            this.specialChars[i.charCodeAt()] = 0;
-        }
-    }
-
-    specialCharsNotWanted()
-    {
-        for(let i of `\\\`'"/|,<>~`)
-        {
-            this.specialChars[i.charCodeAt()] = 0;
         }
     }
 

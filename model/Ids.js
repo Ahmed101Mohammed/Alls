@@ -11,4 +11,4 @@ const IdsSchema = mongoose.Schema(
 )
 
 // export:
-module.exports = Ids;
+module.exports = mongoose.model('Ids',IdsSchema);

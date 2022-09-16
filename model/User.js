@@ -24,7 +24,12 @@ const UserSchema = mongoose.Schema({
     },
 
     refreshTocken:{
-        type: string,
+        type: String,
+    },
+
+    verified:{
+        type: Boolean,
+        default: false,
     },
 
     poducts:{
@@ -48,4 +53,4 @@ const UserSchema = mongoose.Schema({
 })
 
 // export:
-module.exports = UserSchema;
+module.exports = mongoose.model('User',UserSchema);
