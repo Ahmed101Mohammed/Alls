@@ -11,6 +11,7 @@ const registerPostUserData = async(req,res)=>{
     console.log({userName,email,password})
     
     Register.isACorrectInputs({userName,email,password},res);
+    
 
 }
 

@@ -24,7 +24,7 @@ const Register = {
         return false;
     },
 
-    isEmpty: (string,errorType)=>{
+    isEmpty: (string,errorType,response)=>{
         if(string.length === Register.lengths.empityContnet)
         {
             let message;
@@ -42,12 +42,11 @@ const Register = {
             }
             return response.json(message);
         }
-        return "true;"
+        return "true"
     },
 
     userNameCheckMethods:{
         isARightTall: (userName,response)=>{
-
             if(!(userName.length >= Register.lengths.minUsername))
             {
                 return response.json({'userNameError': `User name should be longer than 6 chars`});
@@ -83,8 +82,9 @@ const Register = {
             return 'true';
         }
     },
+
     passwordCheckMethods:{
-        isARightTall: (password)=>{
+        isARightTall: (password, response)=>{
 
             if(!(password.length >= Register.lengths.minPassword))
             {
@@ -95,7 +95,7 @@ const Register = {
             
         },
 
-        isARightInput: (password)=>{
+        isARightInput: (password, response)=>{
 
             let unWantedChars = Register.lettersRelatedToRegister.unAccetableChars;
             if(Search.searchAboutLetterInString(password,unWantedChars))
@@ -114,7 +114,7 @@ const Register = {
     },
 
     isACrorrectUserName: (userName,response)=>{
-        let isEmpty = Register.isEmpty(userName,'userName',);
+        let isEmpty = Register.isEmpty(userName,'userName',response);
         if(Register.notEqualTrueString(isEmpty)) return;
 
         let rightTall = Register.userNameCheckMethods.isARightTall(userName,response);
@@ -127,7 +127,7 @@ const Register = {
     },
 
     isACorrectEmail: (email,response)=>{
-        let isEmpty = Register.isEmpty(email,'email',);
+        let isEmpty = Register.isEmpty(email,'email',response);
         if(Register.notEqualTrueString(isEmpty)) return;
 
         let rightInput = Register.emailCheckMethods.isARightInput(email,response)
@@ -139,47 +139,25 @@ const Register = {
 
     isACorrectPassword: (password, response)=>{
 
-        if(Register.isEmpty(password))
-        {
-            return response.json({'passwordError':`Password is required`})
-        }
+        let isEmpty = Register.isEmpty(password,'password',response);
+        if(Register.notEqualTrueString(isEmpty)) return;
 
-        if(!(password.length >= Register.lengths.minPassword))
-        {
-            return response.json({'passwordError':`Password length shold contein more than 8 letters`})
-        }
+        let rightTall = Register.passwordCheckMethods.isARightTall(password,response);
+        if(Register.notEqualTrueString(rightTall)) return;
 
-        let unWantedChars = Register.lettersRelatedToRegister.unAccetableChars;
-        if(Search.searchAboutLetterInString(password,unWantedChars))
-        {
-            return response.json({'passwordError':`Your password shuld not contain spaces or one of this letters (\`'"/|,<>~)`});
-        }
-
-        let wantedChars = Register.lettersRelatedToRegister.acceptableChars;
-        if(!Search.searchAboutLetterInString(password,wantedChars))
-        {
-            return response.json({'passwordError':`Your password should contain one of this letters (!@#$%^&*(){}[]?:;_-) in minemum`})
-        }
+        let rightInput = Register.passwordCheckMethods.isARightInput(password,response)
+        if(Register.notEqualTrueString(rightInput)) return;
 
         return 'true';
-
     },
 
     isACorrectInputs: ({userName,password,email},response)=>{
 
         let userNameAcceptable = Register.isACrorrectUserName(userName,response);
-
-        if(userNameAcceptable !== 'true')
-        {
-            return;
-        }
+        if(Register.notEqualTrueString(userNameAcceptable)) return;
 
         let passwordAcceptable = Register.isACorrectPassword(password,response);
-
-        if(passwordAcceptable !== 'true')
-        {
-            return;
-        }
+        if(Register.notEqualTrueString(passwordAcceptable)) return;
 
         Register.isACorrectEmail(email,response);
     }
