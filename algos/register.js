@@ -93,6 +93,23 @@ const Register = {
 
             return 'true';
             
+        },
+
+        isARightInput: (password)=>{
+
+            let unWantedChars = Register.lettersRelatedToRegister.unAccetableChars;
+            if(Search.searchAboutLetterInString(password,unWantedChars))
+            {
+                return response.json({'passwordError':`Your password shuld not contain spaces or one of this letters (\`'"/|,<>~)`});
+            }
+
+            let wantedChars = Register.lettersRelatedToRegister.acceptableChars;
+            if(!Search.searchAboutLetterInString(password,wantedChars))
+            {
+                return response.json({'passwordError':`Your password should contain one of this letters (!@#$%^&*(){}[]?:;_-) in minemum`})
+            }
+
+            return 'true';
         }
     },
 
