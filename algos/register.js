@@ -19,21 +19,34 @@ const Register = {
         atSign: '@',
     },
 
-    isEmpty: (string)=>{
+    notEqualTrueString: (variable)=>{
+        if(variable !== "true") return true;
+        return false;
+    },
+
+    isEmpty: (string,errorType)=>{
         if(string.length === Register.lengths.empityContnet)
         {
-            return true;
+            let message;
+            switch(errorType){
+                case 'userName':
+                    message =  {'userNameError': "User name is required"};
+                    break;
+                case 'password':
+                    message =  {'passwordError': "The password is required"};
+                    break;
+                case 'email':
+                    message =  {'emailError': "Email is required"};
+                    break;
+
+            }
+            return response.json(message);
         }
-        return false;
+        return "true;"
     },
 
     userNameCheckMethods:{
         isARightTall: (userName,response)=>{
-
-            if(Register.isEmpty(userName))
-            {
-                return response.json({'userNameError': "User name is required"});
-            }
 
             if(!(userName.length >= Register.lengths.minUsername))
             {
@@ -57,15 +70,6 @@ const Register = {
     },
 
     emailCheckMethods:{
-        isARightTall: (email,response)=>{
-
-            if(Register.isEmpty(email))
-            {
-                return response.json({'emailError': "The email is required"});
-            }
-
-            return 'true';
-        },
 
         isARightInput: (email,response)=>{
             let space = Register.lettersRelatedToRegister.space;
@@ -79,37 +83,29 @@ const Register = {
             return 'true';
         }
     },
+    passwordCheckMethods:{
+        
+    },
 
     isACrorrectUserName: (userName,response)=>{
-    
+        let isEmpty = Register.isEmpty(userName,'userName',);
+        if(Register.notEqualTrueString(isEmpty)) return;
+
         let rightTall = Register.userNameCheckMethods.isARightTall(userName,response);
-        if(rightTall !== 'true')
-        {
-            return;
-        }
+        if(Register.notEqualTrueString(rightTall)) return;
 
         let rightInput = Register.userNameCheckMethods.isARightInput(userName,response)
-        if(rightInput !== 'true')
-        {
-            return;
-        }
+        if(Register.notEqualTrueString(rightInput)) return;
 
         return 'true';
     },
 
     isACorrectEmail: (email,response)=>{
-
-        let rightTall = Register.emailCheckMethods.isARightTall(email,response);
-        if(rightTall !== 'true')
-        {
-            return;
-        }
+        let isEmpty = Register.isEmpty(email,'email',);
+        if(Register.notEqualTrueString(isEmpty)) return;
 
         let rightInput = Register.emailCheckMethods.isARightInput(email,response)
-        if(rightInput !== 'true')
-        {
-            return;
-        }
+        if(Register.notEqualTrueString(rightInput)) return;
 
         return 'true';
   
