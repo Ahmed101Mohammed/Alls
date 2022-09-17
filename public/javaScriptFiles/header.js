@@ -1,5 +1,6 @@
 // Opjects:
 let phoneVersion = {
+    
     navParButton: {
         htmlElement: document.querySelector('header .nav-phone'),
 
