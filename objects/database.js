@@ -1,8 +1,13 @@
+// models:
+const path = require('path');
+const User = require(path.join(__dirname,'..','model','User.js'));
+
+// object:
 const database = {
-    isThisValueExisting: async(module,data)=>{
-        let isItExist = await module.findOne(data).then(user=>{
-            console.log('u',user);
-            if(user !== null && user.userName === userName)
+    isTheUserNameDublicated: async(registerUserNameData)=>{
+        let isItExist = await User.findOne(registerUserNameData).then(user=>{
+
+            if(user !== null)
             {
                 return true
             }
