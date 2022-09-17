@@ -84,7 +84,16 @@ const Register = {
         }
     },
     passwordCheckMethods:{
-        
+        isARightTall: (password)=>{
+
+            if(!(password.length >= Register.lengths.minPassword))
+            {
+                return response.json({'passwordError': `The password should be longer than 8 chars`});
+            }
+
+            return 'true';
+            
+        }
     },
 
     isACrorrectUserName: (userName,response)=>{
