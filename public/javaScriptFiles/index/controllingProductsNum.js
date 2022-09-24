@@ -82,7 +82,8 @@ const Containers = {
         Containers.containersObjects[Number(id)] = new Container();
         Containers.containersObjects[Number(id)].index = TheStartedIndex - 1;
         Containers.containersObjects[Number(id)].num = numberOfWantedProducts;
-        //console.log(TheStartedIndex - 1)
+        
+
     },
 
     addTargetProductsToTheContainer: (indexsOfTargetProducts,productsList,theContainer)=>{
@@ -165,12 +166,11 @@ const Containers = {
         let theContainerProducts = Containers.generate20StaticProducts();
         let nextOrPreviouseValue = Diarection.getDirectionValue(nextOrPreviouse);
 
-        console.log({before: containerObject.index});
+     
         containerObject.addToIndexValue(nextOrPreviouseValue);
-        console.log({after: containerObject.index});
+
 
         let theIndexOfProduct = Containers.getNumberFrom0To20(containerObject.index);
-        console.log({theIndexOfProduct});
 
         return theContainerProducts[theIndexOfProduct];
     },

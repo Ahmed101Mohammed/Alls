@@ -22,7 +22,7 @@ const Angles = {
         
         let categoryContainer = e.currentTarget.parentElement.querySelector('div.container');
         
-        console.log({categoryObject});
+
         //moveRight(categoryObject,categoryContainer);
         Containers.addNewProductToContainerFromRight(categoryObject,categoryContainer)
     },
