@@ -1,7 +1,7 @@
 // In this file the scripting determines the number of products in the Categories parts.
 const Containers = {
     getAllContainers:()=> document.querySelectorAll('div.category div.container'),
-    categoriesObjects: [],
+    containersObjects: [],
     externalMethods:{
         generateProduct: (num)=>{
             return `
@@ -77,11 +77,11 @@ const Containers = {
         return products;
     },
 
-    createContainerObject: (containerElements,TheStartedIndex,numberOfWantedProducts)=>{
-        let id = containerElements.parentElement.id;
-        Containers.categoriesObjects[Number(id)] = new Container();
-        Containers.categoriesObjects[Number(id)].index = TheStartedIndex;
-        Containers.categoriesObjects[Number(id)].num = numberOfWantedProducts;
+    createContainerObject: (containerElement,TheStartedIndex,numberOfWantedProducts)=>{
+        let id = containerElement.parentElement.id;
+        Containers.containersObjects[Number(id)] = new Container();
+        Containers.containersObjects[Number(id)].index = TheStartedIndex - 1;
+        Containers.containersObjects[Number(id)].num = numberOfWantedProducts;
     },
 
     addTargetProductsToTheContainer: (indexsOfTargetProducts,productsList,theContainer)=>{
@@ -115,10 +115,52 @@ const Containers = {
         }
     },
 
-    generateProductsAndFixItsWidth: (theStartedIndex,productsNumber)=>{
-        Containers.generateProductsInAllContainers(theStartedIndex,productsNumber);
+    generateProductsAndFixItsWidth: (productsNumber)=>{
+        let theStarterIndex = productsNumber;
+        Containers.generateProductsInAllContainers(theStarterIndex,productsNumber);
         Containers.changeProductsWidth(productsNumber,containerProducts());
-    }
+    },
+
+    generateProductsInContainersAccordingWindowWidth: ()=>{
+        if(window.innerWidth > 1650)
+        {
+            const productsNum = 7;
+            Containers.generateProductsAndFixItsWidth(productsNum);
+        }
+        else if(window.innerWidth > 1530)
+        {
+            const productsNum = 6;
+            Containers.generateProductsAndFixItsWidth(productsNum);
+        }
+        else if(window.innerWidth > 1200)
+        {
+            const productsNum = 5;
+            Containers.generateProductsAndFixItsWidth(productsNum);
+        }
+        else if(window.innerWidth > 1000)
+        {
+            const productsNum = 4;
+            Containers.generateProductsAndFixItsWidth(productsNum);
+        }
+        else if(window.innerWidth > 730)
+        {
+            const productsNum = 3;
+            Containers.generateProductsAndFixItsWidth(productsNum);
+        }
+        else if(window.innerWidth > 455)
+        {
+            const productsNum = 2;
+            Containers.generateProductsAndFixItsWidth(productsNum);
+        }
+        else if(window.innerWidth < 455)
+        {
+            const productsNum = 1;
+            Containers.generateProductsAndFixItsWidth(productsNum);
+        }
+    
+    },
+
+    
 };
 // class category: had the index and num atributes.
 class Container{
@@ -128,19 +170,10 @@ class Container{
         this.num = 0;
     }
 
-    plusIndex()
-    {
-        this.index++;
-    }
-
-    muinsIndex()
-    {
-        this.index--;
+    addToIndexValue = (value)=>{
+        this.index += value;
     }
 }
-
-let categoriesObjects = []; // this variabel save all category objects created.
-
 
 // chose class name
 const choseClass = (num)=>{
@@ -182,14 +215,13 @@ const choseClassL = (num)=>{
     }
 }
 
-// generateProducts: this function take containers and number: it generate products the containers wiht the numper of repeatetion = num in all container. 
 const moveRight = (containerObject,container)=>{
     let products = Containers.generate20StaticProducts();
-    containerObject.plusIndex();
-    let index = (containerObject.index % 20) - 1;
-    index = (index < 0)? 20 + index: index;
+    containerObject.addToIndexValue(1);
 
-    container.innerHTML+=products[index];
+    let nextProductIndex = Containers.getNumberFrom0To20(containerObject.index);
+
+    container.innerHTML+=products[nextProductIndex];
     
     let num = containerObject.num;
     container.lastChild.previousElementSibling.style.width = `${100/num}%`;
@@ -204,10 +236,9 @@ const moveRight = (containerObject,container)=>{
        
 }
 
-// generateProducts: this function take containers and number: it generate products the containers wiht the numper of repeatetion = num in all container. 
 const moveLeft = (containerObject,container)=>{
     let products = Containers.generate20StaticProducts();
-    containerObject.muinsIndex();
+    containerObject.addToIndexValue(-1);
 
     let num = containerObject.num;
     let index = (containerObject.index % 20)-num;
@@ -229,50 +260,33 @@ const moveLeft = (containerObject,container)=>{
        
 }
 
-const generateProductsAccordingWindowWidth = ()=>{
-    if(window.innerWidth > 1650)
-    {
-        Containers.generateProductsAndFixItsWidth(7,7);
-    }
-    else if(window.innerWidth > 1530)
-    {
-        const productsNum = 6;
-        Containers.generateProductsInAllContainers(6,productsNum);
-        Containers.changeProductsWidth(6,containerProducts());
-    }
-    else if(window.innerWidth > 1200)
-    {
-        const productsNum = 5;
-        Containers.generateProductsInAllContainers(5,productsNum);
-        Containers.changeProductsWidth(5,containerProducts());
-    }
-    else if(window.innerWidth > 1000)
-    {
-        const productsNum = 4;
-        Containers.generateProductsInAllContainers(4,productsNum);
-        Containers.changeProductsWidth(4,containerProducts());
-    }
-    else if(window.innerWidth > 730)
-    {
-        const productsNum = 3;
-        Containers.generateProductsInAllContainers(3,productsNum);
-        Containers.changeProductsWidth(3,containerProducts());
-    }
-    else if(window.innerWidth > 455)
-    {
-        const productsNum = 2;
-        Containers.generateProductsInAllContainers(2,productsNum);
-        Containers.changeProductsWidth(2,containerProducts());
-    }
-    else if(window.innerWidth < 455)
-    {
-        const productsNum = 1;
-        Containers.generateProductsInAllContainers(1,productsNum);
-        Containers.changeProductsWidth(1,containerProducts());
-    }
 
+
+window.addEventListener('resize',Containers.generateProductsInContainersAccordingWindowWidth); // set the number of products when the page window resize;
+
+Containers.generateProductsInContainersAccordingWindowWidth(); // set the number of products when page refresh;
+// external:
+const Diarection = {
+    getDirectionValue: (directionName)=>{
+        let valueOfDirectionName = null;
+        
+        switch(directionName)
+        {
+            case "left":
+                valueOfDirectionName = -1;
+                break;
+            case "right":
+                valueOfDirectionName = 1;
+                break;
+            case "next":
+                valueOfDirectionName = 1;
+                break;
+            case "previouse":
+                valueOfDirectionName = -1;
+                break;
+        }
+
+        return valueOfDirectionName;
+        
+    }
 }
-
-window.addEventListener('resize',generateProductsAccordingWindowWidth); // set the number of products when the page window resize;
-
-generateProductsAccordingWindowWidth(); // set the number of products when page refresh;

@@ -18,16 +18,18 @@ const Angles = {
 
     appearNextPtoduct: (e)=>{
         let idOfCategory = e.currentTarget.parentElement.id;
-        let categoryObject = categoriesObjects[Number(idOfCategory)];
-    
+        let categoryObject = Containers.containersObjects[Number(idOfCategory)];
+        
         let categoryContainer = e.currentTarget.parentElement.querySelector('div.container');
         
-        moveRight(categoryObject,categoryContainer);
+        console.log({categoryObject});
+        //moveRight(categoryObject,categoryContainer);
+        Containers.addNewProductToContainerFromRight(categoryObject,categoryContainer)
     },
 
     appearPreviousPtoduct: (e)=>{
         let idOfCategory = e.currentTarget.parentElement.id;
-        let categoryObject = categoriesObjects[Number(idOfCategory)];
+        let categoryObject = Containers.containersObjects[Number(idOfCategory)];
         let categoryContainer = e.currentTarget.parentElement.querySelector('div.container');
     
         moveLeft(categoryObject,categoryContainer);
