@@ -22,6 +22,13 @@ let RegisterForm = {
                 inputElement: ()=> RegisterForm.fieldsetElements.password.htmlElement().querySelector('input#pssw')
 
             },
+
+        register : {
+
+            htmlElement: ()=> RegisterForm.htmlElement().querySelector('fieldset.register'),
+            registerButton: ()=> RegisterForm.fieldsetElements.register.htmlElement().querySelector('div.register'),
+            
+        }
     },
 }
 
