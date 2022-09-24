@@ -16,6 +16,20 @@ const database = {
         if(isItExist) return true;
 
         return false;
+    },
+
+    isTheUserEmailDublicated: async(registerUserEmailData)=>{
+        let isItExist = await User.findOne(registerUserEmailData).then(user => {
+            if(user !== null)
+            {
+                return true;
+            }
+        });
+
+        if(isItExist) return true;
+
+        return false;
+
     }
 }
 
