@@ -160,6 +160,20 @@ const Containers = {
     
     },
 
+    determineNextOrPreviouseProductOfAContainer: (nextOrPreviouse, containerObject)=>{
+        let theContainerProducts = Containers.generate20StaticProducts();
+        let nextOrPreviouseValue = Diarection.getDirectionValue(nextOrPreviouse);
+
+        console.log({before: containerObject.index});
+        containerObject.addToIndexValue(nextOrPreviouseValue);
+        console.log({after: containerObject.index});
+
+        let theIndexOfProduct = Containers.getNumberFrom0To20(containerObject.index);
+        console.log({theIndexOfProduct});
+
+        return theContainerProducts[theIndexOfProduct];
+    },
+
     
 };
 // class category: had the index and num atributes.
