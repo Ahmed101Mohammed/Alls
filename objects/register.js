@@ -1,6 +1,7 @@
 // Modules:
 const path = require('path');
 const Search = require(path.join(__dirname,'search'));
+const database = require(path.join(__dirname,'database.js'));
 
 // Register Object:
 const Register = {
@@ -151,7 +152,7 @@ const Register = {
         return 'true';
     },
 
-    isACorrectInputs: ({userName,password,email})=>{
+    isACorrectInputs: async({userName,password,email})=>{
 
         let userNameAcceptable = Register.isACrorrectUserName(userName);
         if(Register.notEqualTrueString(userNameAcceptable)) return userNameAcceptable;
@@ -162,6 +163,11 @@ const Register = {
         let emailAcceptable = Register.isACorrectEmail(email);
         if(Register.notEqualTrueString(emailAcceptable)) return emailAcceptable;
 
+        let isTheUserNameDuplicate = await database.isTheUserNameDublicated({userName:userName});
+        if(isTheUserNameDuplicate) return {'userNameError':'The user name is taken before'};
+
+        let isTheUserEmailDuplicate = await database.isTheUserEmailDublicated({email:email});
+        if(isTheUserEmailDuplicate) return {'emailError':'The email is used before'};
         return "true";
     }
 
