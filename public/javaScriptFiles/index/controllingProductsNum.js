@@ -174,6 +174,25 @@ const Containers = {
         return theContainerProducts[theIndexOfProduct];
     },
 
+    addNewProductToContainerFromRight: (containerObject, container)=>{
+        let theNewProduct = Containers.determineNextOrPreviousProductOfAContainer("next", containerObject);
+        let numberOfProductInTheContainer = containerObject.num;
+
+        container.innerHTML += theNewProduct;
+        let theNewProductAsANode = container.lastChild.previousElementSibling;
+        theNewProductAsANode.style.width = `${100/numberOfProductInTheContainer}%`;
+
+        let firtProductOfTheContainer = container.firstChild.nextElementSibling;
+
+        setTimeout(()=>{
+            firtProductOfTheContainer.classList.add(choseClass(numberOfProductInTheContainer));
+        },0);
+        setTimeout(()=>{
+            firtProductOfTheContainer.style.display = 'none';
+            firtProductOfTheContainer.remove();
+        },600)        
+    },
+
     
 };
 // class category: had the index and num atributes.
