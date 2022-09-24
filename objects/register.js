@@ -24,7 +24,7 @@ const Register = {
         return false;
     },
 
-    isEmpty: (string,errorType,response)=>{
+    isEmpty: (string,errorType)=>{
         if(string.length === Register.lengths.empityContnet)
         {
             let message;
@@ -40,28 +40,28 @@ const Register = {
                     break;
 
             }
-            return response.json(message);
+            return message;
         }
         return "true"
     },
 
     userNameCheckMethods:{
-        isARightTall: (userName,response)=>{
+        isARightTall: (userName)=>{
             if(!(userName.length >= Register.lengths.minUsername))
             {
-                return response.json({'userNameError': `User name should be longer than 6 chars`});
+                return {'userNameError': `User name should be longer than 6 chars`};
             }
 
             return 'true';
 
         },
 
-        isARightInput: (userName,response)=>{
+        isARightInput: (userName)=>{
             let space = Register.lettersRelatedToRegister.space;
 
             if(Search.searchAboutLetterInString(userName,space))
             {
-                return response.json({'userNameError': `User name should not containe spaces`});
+                return {'userNameError': `User name should not containe spaces`};
             }
 
             return 'true';
@@ -70,13 +70,13 @@ const Register = {
 
     emailCheckMethods:{
 
-        isARightInput: (email,response)=>{
+        isARightInput: (email)=>{
             let space = Register.lettersRelatedToRegister.space;
             let atSign = Register.lettersRelatedToRegister.atSign;
 
             if(Search.searchAboutLetterInString(email,space) || !Search.searchAboutLetterInString(email,atSign))
             {
-                return response.json({'emailError':`Write a correct email, please`});
+                return {'emailError':`Write a correct email, please`};
             }
 
             return 'true';
@@ -84,82 +84,83 @@ const Register = {
     },
 
     passwordCheckMethods:{
-        isARightTall: (password, response)=>{
+        isARightTall: (password)=>{
 
             if(!(password.length >= Register.lengths.minPassword))
             {
-                return response.json({'passwordError': `The password should be longer than 8 chars`});
+                return {'passwordError': `The password should be longer than 8 chars`};
             }
 
             return 'true';
             
         },
 
-        isARightInput: (password, response)=>{
+        isARightInput: (password)=>{
 
             let unWantedChars = Register.lettersRelatedToRegister.unAccetableChars;
             if(Search.searchAboutLetterInString(password,unWantedChars))
             {
-                return response.json({'passwordError':`Your password shuld not contain spaces or one of this letters (\`'"/|,<>~)`});
+                return {'passwordError':`Your password shuld not contain spaces or one of this letters (\`'"/|,<>~)`};
             }
 
             let wantedChars = Register.lettersRelatedToRegister.acceptableChars;
             if(!Search.searchAboutLetterInString(password,wantedChars))
             {
-                return response.json({'passwordError':`Your password should contain one of this letters (!@#$%^&*(){}[]?:;_-) in minemum`})
+                return {'passwordError':`Your password should contain one of this letters (!@#$%^&*(){}[]?:;_-) in minemum`};
             }
 
             return 'true';
         }
     },
 
-    isACrorrectUserName: (userName,response)=>{
-        let isEmpty = Register.isEmpty(userName,'userName',response);
-        if(Register.notEqualTrueString(isEmpty)) return;
+    isACrorrectUserName: (userName)=>{
+        let isEmpty = Register.isEmpty(userName,'userName');
+        if(Register.notEqualTrueString(isEmpty)) return isEmpty;
 
-        let rightTall = Register.userNameCheckMethods.isARightTall(userName,response);
-        if(Register.notEqualTrueString(rightTall)) return;
+        let rightTall = Register.userNameCheckMethods.isARightTall(userName);
+        if(Register.notEqualTrueString(rightTall)) return rightTall;
 
-        let rightInput = Register.userNameCheckMethods.isARightInput(userName,response)
-        if(Register.notEqualTrueString(rightInput)) return;
+        let rightInput = Register.userNameCheckMethods.isARightInput(userName)
+        if(Register.notEqualTrueString(rightInput)) return rightInput;
 
         return 'true';
     },
 
-    isACorrectEmail: (email,response)=>{
-        let isEmpty = Register.isEmpty(email,'email',response);
-        if(Register.notEqualTrueString(isEmpty)) return;
+    isACorrectEmail: (email)=>{
+        let isEmpty = Register.isEmpty(email,'email');
+        if(Register.notEqualTrueString(isEmpty)) return isEmpty;
 
-        let rightInput = Register.emailCheckMethods.isARightInput(email,response)
-        if(Register.notEqualTrueString(rightInput)) return;
+        let rightInput = Register.emailCheckMethods.isARightInput(email)
+        if(Register.notEqualTrueString(rightInput)) return rightInput;
 
         return 'true';
   
     },
 
-    isACorrectPassword: (password, response)=>{
+    isACorrectPassword: (password,)=>{
 
-        let isEmpty = Register.isEmpty(password,'password',response);
-        if(Register.notEqualTrueString(isEmpty)) return;
+        let isEmpty = Register.isEmpty(password,'password');
+        if(Register.notEqualTrueString(isEmpty)) return isEmpty;
 
-        let rightTall = Register.passwordCheckMethods.isARightTall(password,response);
-        if(Register.notEqualTrueString(rightTall)) return;
+        let rightTall = Register.passwordCheckMethods.isARightTall(password);
+        if(Register.notEqualTrueString(rightTall)) return rightTall;
 
-        let rightInput = Register.passwordCheckMethods.isARightInput(password,response)
-        if(Register.notEqualTrueString(rightInput)) return;
+        let rightInput = Register.passwordCheckMethods.isARightInput(password)
+        if(Register.notEqualTrueString(rightInput)) return rightInput;
 
         return 'true';
     },
 
-    isACorrectInputs: ({userName,password,email},response)=>{
+    isACorrectInputs: ({userName,password,email})=>{
 
-        let userNameAcceptable = Register.isACrorrectUserName(userName,response);
-        if(Register.notEqualTrueString(userNameAcceptable)) return;
+        let userNameAcceptable = Register.isACrorrectUserName(userName);
+        if(Register.notEqualTrueString(userNameAcceptable)) return userNameAcceptable;
 
-        let passwordAcceptable = Register.isACorrectPassword(password,response);
-        if(Register.notEqualTrueString(passwordAcceptable)) return;
+        let passwordAcceptable = Register.isACorrectPassword(password);
+        if(Register.notEqualTrueString(passwordAcceptable)) return passwordAcceptable;
 
-        Register.isACorrectEmail(email,response);
+        let emailAcceptable = Register.isACorrectEmail(email);
+        if(Register.notEqualTrueString(emailAcceptable)) return emailAcceptable;
 
         return "true";
     }

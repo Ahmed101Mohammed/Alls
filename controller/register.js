@@ -4,12 +4,13 @@ const Register = require(path.join(__dirname,'..','objects','register'));
 const User = require(path.join(__dirname,'..','model','User.js'));
 const bcrypt = require('bcrypt');
 const database = require(path.join(__dirname,'..','objects','database.js'));
+
 // post new user data function:
 const createNewAccount = async(req,res)=>{
     const {userName,email,password} = req.body;
     
-    let isACorrectInputs = Register.isACorrectInputs({userName,email,password},res);
-    if(Register.notEqualTrueString(isACorrectInputs)) return;
+    let isACorrectInputs = Register.isACorrectInputs({userName,email,password});
+    if(Register.notEqualTrueString(isACorrectInputs)) return res.json(isACorrectInputs);
 
     
     let isTheUserNameDuplicate = await database.isTheUserNameDublicated({userName:userName})
