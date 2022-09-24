@@ -172,7 +172,7 @@ const Register = {
         return "true";
     },
 
-    hashPasswordHandlingError: async(password)=>{
+    hashPasswordErrorHandler: async(password)=>{
         let hashPassword = false;
         try{
             await bcrypt.hash(password,10).then(result=>{
@@ -181,6 +181,26 @@ const Register = {
         }
         catch(e){}
         return hashPassword;
+    },
+
+    addUserRigisterDataToTheDataBaseErrorHandeler: async(registerData)=>{
+        let dataSavedMassage = {
+            status: 200,
+            message: {'successRegister': 'Now you have an account on ALLs website'}
+        };
+        try
+        {
+            await registerData.save();
+        }
+        catch(e)
+        {
+            dataSavedMassage = {
+                status: 500,
+                message: {'serverError': 'The account field to create, Try again'},
+            }; 
+        };
+
+        return dataSavedMassage;
     }
 
 
