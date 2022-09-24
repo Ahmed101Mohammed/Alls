@@ -1,7 +1,7 @@
 // modules:
 const path = require('path');
 const Register = require(path.join(__dirname,'..','objects','register'));
-const User = require(path.join(__dirname,'..','model','User.js'));
+const UserSchema = require(path.join(__dirname,'..','model','User.js'));
 
 // post new user data function:
 const createNewAccount = async(req,res)=>{
@@ -13,13 +13,13 @@ const createNewAccount = async(req,res)=>{
     let hashedPassword = await Register.hashPasswordErrorHandler(password);
     if(!hashedPassword) return res.status(500).json({"serverError" : "Something wrong with hashing password process"});
 
-    let user = new User({
+    let userRegisterData = new UserSchema({
         userName,
         email,
         password:hashedPassword,
     });
 
-    let successStatusMessage = await Register.addUserRigisterDataToTheDataBaseErrorHandeler(user);
+    let successStatusMessage = await Register.addUserRigisterDataToTheDataBaseErrorHandeler(userRegisterData);
     return res.status(successStatusMessage.status).json(successStatusMessage.message);
 }
 
