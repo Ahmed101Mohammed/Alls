@@ -82,6 +82,7 @@ const Containers = {
         Containers.containersObjects[Number(id)] = new Container();
         Containers.containersObjects[Number(id)].index = TheStartedIndex - 1;
         Containers.containersObjects[Number(id)].num = numberOfWantedProducts;
+        //console.log(TheStartedIndex - 1)
     },
 
     addTargetProductsToTheContainer: (indexsOfTargetProducts,productsList,theContainer)=>{
@@ -175,7 +176,7 @@ const Containers = {
     },
 
     addNewProductToContainerFromRight: (containerObject, container)=>{
-        let theNewProduct = Containers.determineNextOrPreviousProductOfAContainer("next", containerObject);
+        let theNewProduct = Containers.determineNextOrPreviouseProductOfAContainer("next", containerObject);
         let numberOfProductInTheContainer = containerObject.num;
 
         container.innerHTML += theNewProduct;
@@ -193,7 +194,29 @@ const Containers = {
         },600)        
     },
 
-    
+    addNewProductToContainerFromLeft: (containerObject, container)=>{
+        let indexOfTheTargetProduct = Containers.getNumberFrom0To20(containerObject.index - containerObject.num);
+        //let theNewProduct = Containers.determineNextOrPreviouseProductOfAContainer("", containerObject);
+        let theContainerProducts = Containers.generate20StaticProducts();
+        let theNewProduct = theContainerProducts[indexOfTheTargetProduct];
+        containerObject.addToIndexValue(-1);
+        let numberOfProductInTheContainer = containerObject.num;
+
+        container.innerHTML = theNewProduct + container.innerHTML;
+
+        let theNewProductAsANode = container.firstChild.nextElementSibling;
+        theNewProductAsANode.style.width = `${100/numberOfProductInTheContainer}%`;
+
+        let lastProductOfTheContainer = container.lastChild.previousElementSibling;
+
+        setTimeout(()=>{
+            lastProductOfTheContainer.classList.add(choseClassL(numberOfProductInTheContainer));
+        },0);
+        setTimeout(()=>{
+            lastProductOfTheContainer.style.display = 'none';
+            lastProductOfTheContainer.remove();
+        },600)        
+    }
 };
 // class category: had the index and num atributes.
 class Container{
@@ -271,7 +294,7 @@ const moveRight = (containerObject,container)=>{
 
 const moveLeft = (containerObject,container)=>{
     let products = Containers.generate20StaticProducts();
-    containerObject.addToIndexValue(-1);
+    
 
     let num = containerObject.num;
     let index = (containerObject.index % 20)-num;
@@ -289,6 +312,7 @@ const moveLeft = (containerObject,container)=>{
     setTimeout(()=>{
         container.lastChild.previousElementSibling.style.display = 'none';
         container.lastChild.previousElementSibling.remove();
+        containerObject.addToIndexValue(-1);
     },600)
        
 }
@@ -316,6 +340,9 @@ const Diarection = {
                 break;
             case "previouse":
                 valueOfDirectionName = -1;
+                break;
+            default:
+                valueOfDirectionName = 0;
                 break;
         }
 

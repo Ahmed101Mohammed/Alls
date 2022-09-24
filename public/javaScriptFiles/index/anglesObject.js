@@ -30,9 +30,11 @@ const Angles = {
     appearPreviousPtoduct: (e)=>{
         let idOfCategory = e.currentTarget.parentElement.id;
         let categoryObject = Containers.containersObjects[Number(idOfCategory)];
+        
         let categoryContainer = e.currentTarget.parentElement.querySelector('div.container');
     
-        moveLeft(categoryObject,categoryContainer);
+        //moveLeft(categoryObject,categoryContainer);
+        Containers.addNewProductToContainerFromLeft(categoryObject,categoryContainer);
     },
 };
 
