@@ -2,6 +2,7 @@
 const path = require('path');
 const Search = require(path.join(__dirname,'search'));
 const database = require(path.join(__dirname,'database.js'));
+const bcrypt = require('bcrypt');
 
 // Register Object:
 const Register = {
@@ -169,7 +170,19 @@ const Register = {
         let isTheUserEmailDuplicate = await database.isTheUserEmailDublicated({email:email});
         if(isTheUserEmailDuplicate) return {'emailError':'The email is used before'};
         return "true";
+    },
+
+    hashPasswordHandlingError: async(password)=>{
+        let hashPassword = false;
+        try{
+            await bcrypt.hash(password,10).then(result=>{
+                hashPassword = result;
+            });
+        }
+        catch(e){}
+        return hashPassword;
     }
+
 
 }
 

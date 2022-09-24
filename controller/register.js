@@ -2,7 +2,6 @@
 const path = require('path');
 const Register = require(path.join(__dirname,'..','objects','register'));
 const User = require(path.join(__dirname,'..','model','User.js'));
-const bcrypt = require('bcrypt');
 
 // post new user data function:
 const createNewAccount = async(req,res)=>{
@@ -11,18 +10,19 @@ const createNewAccount = async(req,res)=>{
     let isACorrectInputs = await Register.isACorrectInputs({userName,email,password});
     if(Register.notEqualTrueString(isACorrectInputs)) return res.json(isACorrectInputs);
 
+    let hashedPassword = await Register.hashPasswordHandlingError(password);
+    if(!hashedPassword) return res.status(500).json({"serverError" : "Something wrong with hashing password process"});
+
     // clean:
     try{
-        let hashedPpassword = await bcrypt.hash(password,10);
-
         let user = new User({
             userName,
             email,
-            password: hashedPpassword
+            password:hashedPassword,
         });
-
+        console.log({user})
         let newUser = await user.save()
-
+        console.log(newUser)
         return res.status(200).json({'successRegister': 'Now you have an account on ALLs website'})
     }
     catch(e)
