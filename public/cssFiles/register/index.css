@@ -125,3 +125,15 @@ form fieldset.register div:hover
         /* form inputs style CLOSE */
 }
 
+/* Special Styles */
+.errorMessage{
+    padding: 5px;
+    color: #e0440a;
+    background-color: cyan;
+    width: fit-content;
+    margin: 2px;
+    margin-left: 0px;
+    border-left: orangered 3px solid;
+    font-family: sans-serif;
+    font-size: 15px;
+}

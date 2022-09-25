@@ -58,20 +58,51 @@ let RegisterForm = {
         }
     },
 
-    sendDataToTheServer: async()=>{
-        const userNameValue = RegisterForm.fieldsetElements.userName.inputElement().value;
-        const emailValue = RegisterForm.fieldsetElements.email.inputElement().value;
-        const passwordValue = RegisterForm.fieldsetElements.password.inputElement().value;
-        
-        const data = {
-            userName: userNameValue,
-            email: emailValue,
-            password: passwordValue
-        };
+    sendUserRegisterDataToTheServer: {
+        mainMethod: async()=>{
+            let userRegisterData = RegisterForm.sendUserRegisterDataToTheServer.prapereTheUserRegisterData();
+            let response = await RegisterForm.postUserDataInRegisterRoute.mainMethod(userRegisterData);
+            
 
-        let response = await RegisterForm.postUserDataInRegisterRoute.mainMethod(data);
-        return response;
-    }  
+            return response;
+        },
+
+        prapereTheUserRegisterData:()=>{
+            const userNameValue = RegisterForm.fieldsetElements.userName.inputElement().value;
+            const emailValue = RegisterForm.fieldsetElements.email.inputElement().value;
+            const passwordValue = RegisterForm.fieldsetElements.password.inputElement().value;
+            
+            const userRegisterData = {
+                userName: userNameValue,
+                email: emailValue,
+                password: passwordValue
+            };
+
+            return userRegisterData;
+        },
+
+        appearErrorMessageAccordingErrorType: {
+            mainMethod: (errorMassage)=>{
+                let errorElement = cteateErrorElement(errorMassage);
+
+                if("userNameError" in errorMassage)
+                {
+                    let userNameFieldset = RegisterForm.fieldsetElements.userName.htmlElement();
+                    appearTheErrorMessageInFrontEnd(userNameFieldset,errorElement);
+                }
+                else if("passwordError" in errorMassage)
+                {
+
+                }
+                else if("emailError" in errorMassage)
+                {
+                    
+                }
+            },
+
+        }
+
+    }
 }
 
-RegisterForm.fieldsetElements.register.registerButton().addEventListener('click',RegisterForm.sendDataToTheServer)
+RegisterForm.fieldsetElements.register.registerButton().addEventListener('click',RegisterForm.sendUserRegisterDataToTheServer.mainMethod)
