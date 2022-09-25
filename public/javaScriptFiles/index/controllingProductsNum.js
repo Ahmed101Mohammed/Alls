@@ -1,5 +1,7 @@
-const Containers = {
-    
+import Container from './containerClass.js';
+
+export const Containers = {
+
     getAllContainers:()=> document.querySelectorAll('div.category div.container'),
     containersObjects: [],
 
@@ -31,7 +33,7 @@ const Containers = {
         }    
     },
 
-    generateProductsAndFixItsWidth: (productsNumber)=>{
+    generateProductsInContainersAndFixTheseWidth: (productsNumber)=>{
         let theStarterIndex = productsNumber;
         Containers.generateProductsInAllContainers(theStarterIndex,productsNumber);
         Products.changeProductsWidthAcordingProductsNumper(productsNumber);
@@ -41,45 +43,39 @@ const Containers = {
         if(window.innerWidth > 1650)
         {
             const productsNum = 7;
-            Containers.generateProductsAndFixItsWidth(productsNum);
+            Containers.generateProductsInContainersAndFixTheseWidth(productsNum);
         }
         else if(window.innerWidth > 1530)
         {
             const productsNum = 6;
-            Containers.generateProductsAndFixItsWidth(productsNum);
+            Containers.generateProductsInContainersAndFixTheseWidth(productsNum);
         }
         else if(window.innerWidth > 1200)
         {
             const productsNum = 5;
-            Containers.generateProductsAndFixItsWidth(productsNum);
+            Containers.generateProductsInContainersAndFixTheseWidth(productsNum);
         }
         else if(window.innerWidth > 1000)
         {
             const productsNum = 4;
-            Containers.generateProductsAndFixItsWidth(productsNum);
+            Containers.generateProductsInContainersAndFixTheseWidth(productsNum);
         }
         else if(window.innerWidth > 730)
         {
             const productsNum = 3;
-            Containers.generateProductsAndFixItsWidth(productsNum);
+            Containers.generateProductsInContainersAndFixTheseWidth(productsNum);
         }
         else if(window.innerWidth > 455)
         {
             const productsNum = 2;
-            Containers.generateProductsAndFixItsWidth(productsNum);
+            Containers.generateProductsInContainersAndFixTheseWidth(productsNum);
         }
         else if(window.innerWidth < 455)
         {
             const productsNum = 1;
-            Containers.generateProductsAndFixItsWidth(productsNum);
+            Containers.generateProductsInContainersAndFixTheseWidth(productsNum);
         }
     
-    },
-    getNumberedProductByIndexFrom0To19: (TheIndexOfTheProduct)=>{
-        let product = Products.generate20StaticProducts();
-        let targetProduct = product[TheIndexOfTheProduct];
-
-        return targetProduct;
     },
 
     addProductToTheEndOfAContainer: (productElement,containerElement)=>{
@@ -116,7 +112,7 @@ const Containers = {
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
         let tarqetProductIndex = Products.Math.getNumberFrom0To20(containerObject.index);
-        let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
+        let targetProduct = Products.getNumberedProductAccordingIndexFrom0To19(tarqetProductIndex);
         Containers.addProductToTheEndOfAContainer(targetProduct,container);
 
         let theNewProductAsANode = container.lastChild.previousElementSibling;
@@ -131,7 +127,7 @@ const Containers = {
     addNewProductToContainerFromLeft: (containerObject, container)=>{
 
         let tarqetProductIndex = Products.Math.getNumberFrom0To20(containerObject.index - containerObject.num);
-        let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
+        let targetProduct = Products.getNumberedProductAccordingIndexFrom0To19(tarqetProductIndex);
         Containers.addProductToTheStartOfAContainer(targetProduct, container);
 
         containerObject.addToIndexValue(-1); // decrease the starter index.
@@ -141,21 +137,11 @@ const Containers = {
 
         let lastProductOfTheContainer = container.lastChild.previousElementSibling;
         let containerProductsNumper = containerObject.num;
-        Containers.deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection(lastProductOfTheContainer,containerObject.num,'right');
+        Containers.deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection(lastProductOfTheContainer,containerProductsNumper,'right');
     }
 };
-// class category: had the index and num atributes.
-class Container{
-    constructor()
-    {
-        this.index = 0;
-        this.num = 0;
-    }
 
-    addToIndexValue = (value)=>{
-        this.index += value;
-    }
-}
+
 
 window.addEventListener('resize',Containers.generateProductsInContainersAccordingWindowWidth); // set the number of products when the page window resize;
 

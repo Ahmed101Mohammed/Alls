@@ -1,3 +1,5 @@
+import { Containers } from "./controllingProductsNum.js";
+
 const Angles = {
     rightAngles: ()=> document.querySelectorAll('.right-angle'),
     leftAngles: ()=> document.querySelectorAll('.left-angle'),

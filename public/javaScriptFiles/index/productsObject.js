@@ -1,3 +1,4 @@
+
 const Products = {
     Math: {
         getNumberFrom0To20: (theNumber)=>{
@@ -81,5 +82,12 @@ const Products = {
         {
             product.style.width = `${100 / productsNumber}%`;
         }
+    },
+
+    getNumberedProductAccordingIndexFrom0To19: (TheIndexOfTheProduct)=>{
+        let product = Products.generate20StaticProducts();
+        let targetProduct = product[TheIndexOfTheProduct];
+
+        return targetProduct;
     },
 }
