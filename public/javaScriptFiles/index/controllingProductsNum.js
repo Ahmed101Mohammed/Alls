@@ -250,30 +250,3 @@ window.addEventListener('resize',Containers.generateProductsInContainersAccordin
 
 Containers.generateProductsInContainersAccordingWindowWidth(); // set the number of products when page refresh;
 // external:
-const Diarection = {
-    getDirectionValue: (directionName)=>{
-        let valueOfDirectionName = null;
-        
-        switch(directionName)
-        {
-            case "left":
-                valueOfDirectionName = -1;
-                break;
-            case "right":
-                valueOfDirectionName = 1;
-                break;
-            case "next":
-                valueOfDirectionName = 1;
-                break;
-            case "previouse":
-                valueOfDirectionName = -1;
-                break;
-            default:
-                valueOfDirectionName = 0;
-                break;
-        }
-
-        return valueOfDirectionName;
-        
-    }
-}
