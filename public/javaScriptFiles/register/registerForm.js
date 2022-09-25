@@ -100,6 +100,13 @@ let RegisterForm = {
                 }
             },
 
+            cteateErrorElement: (errorMassage)=>{
+                let errorElement = document.createElement("div");
+                errorElement.classList.add("errorMessage");
+
+                return errorElement;
+            }
+
         }
 
     }
