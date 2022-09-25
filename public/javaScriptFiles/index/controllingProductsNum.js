@@ -181,6 +181,12 @@ const Containers = {
         productNode.style.width = `${ 100 / numberOfProductsInTheContainer }%`;
     },
 
+    getElementSwappingClassByContainerProductsNumberandSwappingDirection: (containerProductsNumber,swappingDirection)=>{
+
+        let className = `${swappingDirection}SwappingWhenNumberOfItemsEqual${containerProductsNumber}`;
+        return className;
+    },
+
     addNewProductToContainerFromRight: (containerObject, container)=>{
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
@@ -192,9 +198,10 @@ const Containers = {
         Containers.resizeProductNodeAccordingContainerProductsNumber(theNewProductAsANode,containerObject);
 
         let firtProductOfTheContainer = container.firstChild.nextElementSibling;
-
+        
         setTimeout(()=>{
-            firtProductOfTheContainer.classList.add(choseClass(containerObject.num));
+            let swappingClass = Containers.getElementSwappingClassByContainerProductsNumberandSwappingDirection(containerObject.num,'left');
+            firtProductOfTheContainer.classList.add(swappingClass);
         },0);
         setTimeout(()=>{
             firtProductOfTheContainer.style.display = 'none';
@@ -203,9 +210,9 @@ const Containers = {
     },
 
     addNewProductToContainerFromLeft: (containerObject, container)=>{
-        let indexOfTheTargetProduct = Containers.getNumberFrom0To20(containerObject.index - containerObject.num);
 
-        let theNewProduct = Containers.getNumberedProductByIndexFrom0To19(indexOfTheTargetProduct);
+        let tarqetProductIndex = Containers.getNumberFrom0To20(containerObject.index - containerObject.num);
+        let theNewProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
         Containers.addProductToTheStartOfAContainer(theNewProduct, container);
 
         containerObject.addToIndexValue(-1); // decrease the starter index.
@@ -216,7 +223,8 @@ const Containers = {
         let lastProductOfTheContainer = container.lastChild.previousElementSibling;
 
         setTimeout(()=>{
-            lastProductOfTheContainer.classList.add(choseClassL(containerObject.num));
+            let swappingClass = Containers.getElementSwappingClassByContainerProductsNumberandSwappingDirection(containerObject.num,'right');
+            lastProductOfTheContainer.classList.add(swappingClass);
         },0);
         setTimeout(()=>{
             lastProductOfTheContainer.style.display = 'none';
@@ -241,19 +249,19 @@ class Container{
 const choseClass = (num)=>{
     switch(num){
         case 1:
-            return 'l1';
+            return 'leftSwappingWhenNumberOfItemsEqual1';
         case 2:
-            return 'l2';
+            return 'leftSwappingWhenNumberOfItemsEqual2';
         case 3:
-            return 'l3';
+            return 'leftSwappingWhenNumberOfItemsEqual3';
         case 4:
-            return 'l4';
+            return 'leftSwappingWhenNumberOfItemsEqual4';
         case 5:
-            return 'l5';
+            return 'leftSwappingWhenNumberOfItemsEqual5';
         case 6:
-            return 'l6';
+            return 'leftSwappingWhenNumberOfItemsEqual6';
         case 7:
-            return 'l7';
+            return 'leftSwappingWhenNumberOfItemsEqual7';
     }
 }
 
@@ -261,19 +269,19 @@ const choseClass = (num)=>{
 const choseClassL = (num)=>{
     switch(num){
         case 1:
-            return 'lp1';
+            return 'rightSwappingWhenNumberOfItemsEqual1';
         case 2:
-            return 'lp2';
+            return 'rightSwappingWhenNumberOfItemsEqual2';
         case 3:
-            return 'lp3';
+            return 'rightSwappingWhenNumberOfItemsEqual3';
         case 4:
-            return 'lp4';
+            return 'rightSwappingWhenNumberOfItemsEqual4';
         case 5:
-            return 'lp5';
+            return 'rightSwappingWhenNumberOfItemsEqual5';
         case 6:
-            return 'lp6';
+            return 'rightSwappingWhenNumberOfItemsEqual6';
         case 7:
-            return 'lp7';
+            return 'rightSwappingWhenNumberOfItemsEqual7';
     }
 }
 
