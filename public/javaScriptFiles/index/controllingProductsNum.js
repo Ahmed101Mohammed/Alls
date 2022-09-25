@@ -187,6 +187,17 @@ const Containers = {
         return className;
     },
 
+    deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection: (theElement,containerProductsNumber,swappingDirection)=>{
+        setTimeout(()=>{
+            let swappingClass = Containers.getElementSwappingClassByContainerProductsNumberandSwappingDirection(containerProductsNumber,swappingDirection);
+            theElement.classList.add(swappingClass);
+        },0);
+        setTimeout(()=>{
+            theElement.style.display = 'none';
+            theElement.remove();
+        },600) 
+    },
+
     addNewProductToContainerFromRight: (containerObject, container)=>{
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
@@ -199,14 +210,8 @@ const Containers = {
 
         let firtProductOfTheContainer = container.firstChild.nextElementSibling;
         
-        setTimeout(()=>{
-            let swappingClass = Containers.getElementSwappingClassByContainerProductsNumberandSwappingDirection(containerObject.num,'left');
-            firtProductOfTheContainer.classList.add(swappingClass);
-        },0);
-        setTimeout(()=>{
-            firtProductOfTheContainer.style.display = 'none';
-            firtProductOfTheContainer.remove();
-        },600)        
+        let containerProductsNumper = containerObject.num;
+        Containers.deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection(firtProductOfTheContainer,containerProductsNumper,'left');
     },
 
     addNewProductToContainerFromLeft: (containerObject, container)=>{
@@ -221,15 +226,8 @@ const Containers = {
         Containers.resizeProductNodeAccordingContainerProductsNumber(theNewProductAsANode,containerObject)
 
         let lastProductOfTheContainer = container.lastChild.previousElementSibling;
-
-        setTimeout(()=>{
-            let swappingClass = Containers.getElementSwappingClassByContainerProductsNumberandSwappingDirection(containerObject.num,'right');
-            lastProductOfTheContainer.classList.add(swappingClass);
-        },0);
-        setTimeout(()=>{
-            lastProductOfTheContainer.style.display = 'none';
-            lastProductOfTheContainer.remove();
-        },600)        
+        let containerProductsNumper = containerObject.num;
+        Containers.deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection(lastProductOfTheContainer,containerObject.num,'right');
     }
 };
 // class category: had the index and num atributes.
@@ -244,7 +242,6 @@ class Container{
         this.index += value;
     }
 }
-
 
 window.addEventListener('resize',Containers.generateProductsInContainersAccordingWindowWidth); // set the number of products when the page window resize;
 
