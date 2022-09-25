@@ -176,6 +176,11 @@ const Containers = {
         containerElement.innerHTML = productElement + containerElement.innerHTML;
     },
 
+    resizeProductNodeAccordingContainerProductsNumber:(productNode,containerObject)=>{
+        let numberOfProductsInTheContainer = containerObject.num;
+        productNode.style.width = `${ 100 / numberOfProductsInTheContainer }%`;
+    },
+
     addNewProductToContainerFromRight: (containerObject, container)=>{
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
@@ -183,15 +188,13 @@ const Containers = {
         let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
         Containers.addProductToTheEndOfAContainer(targetProduct,container);
 
-        let numberOfProductInTheContainer = containerObject.num;
-
         let theNewProductAsANode = container.lastChild.previousElementSibling;
-        theNewProductAsANode.style.width = `${100/numberOfProductInTheContainer}%`;
+        Containers.resizeProductNodeAccordingContainerProductsNumber(theNewProductAsANode,containerObject);
 
         let firtProductOfTheContainer = container.firstChild.nextElementSibling;
 
         setTimeout(()=>{
-            firtProductOfTheContainer.classList.add(choseClass(numberOfProductInTheContainer));
+            firtProductOfTheContainer.classList.add(choseClass(containerObject.num));
         },0);
         setTimeout(()=>{
             firtProductOfTheContainer.style.display = 'none';
@@ -207,15 +210,13 @@ const Containers = {
 
         containerObject.addToIndexValue(-1); // decrease the starter index.
 
-        let numberOfProductInTheContainer = containerObject.num;
-
         let theNewProductAsANode = container.firstChild.nextElementSibling;
-        theNewProductAsANode.style.width = `${100/numberOfProductInTheContainer}%`;
+        Containers.resizeProductNodeAccordingContainerProductsNumber(theNewProductAsANode,containerObject)
 
         let lastProductOfTheContainer = container.lastChild.previousElementSibling;
 
         setTimeout(()=>{
-            lastProductOfTheContainer.classList.add(choseClassL(numberOfProductInTheContainer));
+            lastProductOfTheContainer.classList.add(choseClassL(containerObject.num));
         },0);
         setTimeout(()=>{
             lastProductOfTheContainer.style.display = 'none';
