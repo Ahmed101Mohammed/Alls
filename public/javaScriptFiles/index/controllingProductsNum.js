@@ -168,15 +168,18 @@ const Containers = {
         return targetProduct;
     },
 
+    addProductToTheEndOfTheContainer: (productElement,containerElement)=>{
+        containerElement.innerHTML += productElement;
+    },
     addNewProductToContainerFromRight: (containerObject, container)=>{
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
         let tarqetProductIndex = Containers.getNumberFrom0To20(containerObject.index);
         let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
+        Containers.addProductToTheEndOfTheContainer(targetProduct,container);
 
         let numberOfProductInTheContainer = containerObject.num;
 
-        container.innerHTML += targetProduct;
         let theNewProductAsANode = container.lastChild.previousElementSibling;
         theNewProductAsANode.style.width = `${100/numberOfProductInTheContainer}%`;
 
