@@ -1,4 +1,17 @@
 const Products = {
+    Math: {
+        getNumberFrom0To20: (theNumber)=>{
+            let number = theNumber % 20;
+            
+            if(number < 0)
+            {
+                number += 20;
+            }
+    
+            return number;
+        },
+    },
+
     allProducts: ()=> document.querySelectorAll('div.category div.container div.product'),
     generateProduct: (num)=>{
         return `
@@ -31,5 +44,34 @@ const Products = {
 
                     </div>
                 `
-    }
+    },   
+
+    getIndexsOfTargetProducts: (TheStartedIndex,numOfWantedProducts)=>{
+
+        TheStartedIndex = Products.Math.getNumberFrom0To20(TheStartedIndex - 1);
+
+        let indexsOfWantedProducts = [];
+
+        for(let productNumber = 0; productNumber < numOfWantedProducts; productNumber++)
+        {
+            TheStartedIndex = Products.Math.getNumberFrom0To20(TheStartedIndex);
+    
+            indexsOfWantedProducts.push(TheStartedIndex);
+    
+            TheStartedIndex--;
+        }
+
+        return indexsOfWantedProducts;
+    },
+
+    generate20StaticProducts: ()=>{
+        let products = [];
+    
+        for(let productNumber = 0; productNumber < 20; productNumber++)
+        {
+            products.push(Products.generateProduct(productNumber + 1));
+        }
+    
+        return products;
+    },
 }

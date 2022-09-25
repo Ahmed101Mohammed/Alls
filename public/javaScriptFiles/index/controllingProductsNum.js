@@ -3,45 +3,7 @@ const Containers = {
     getAllContainers:()=> document.querySelectorAll('div.category div.container'),
     containersObjects: [],
 
-    getNumberFrom0To20: (theNumber)=>{
-        let number = theNumber % 20;
-        
-        if(number < 0)
-        {
-            number += 20;
-        }
-
-        return number;
-    },
-
-    getIndexsOfTargetProducts: (TheStartedIndex,numOfWantedProducts)=>{
-
-        TheStartedIndex = Containers.getNumberFrom0To20(TheStartedIndex - 1);
-
-        let indexsOfWantedProducts = [];
-
-        for(let productNumber = 0; productNumber < numOfWantedProducts; productNumber++)
-        {
-            TheStartedIndex = Containers.getNumberFrom0To20(TheStartedIndex);
     
-            indexsOfWantedProducts.push(TheStartedIndex);
-    
-            TheStartedIndex--;
-        }
-
-        return indexsOfWantedProducts;
-    },
-
-    generate20StaticProducts: ()=>{
-        let products = [];
-    
-        for(let productNumber = 0; productNumber < 20; productNumber++)
-        {
-            products.push(Products.generateProduct(productNumber + 1));
-        }
-    
-        return products;
-    },
 
     createContainerObject: (containerElement,TheStartedIndex,numberOfWantedProducts)=>{
         let id = containerElement.parentElement.id;
@@ -63,8 +25,8 @@ const Containers = {
     generateProductsInAllContainers: (TheStartedIndex,numberOfWantedProducts)=>{
 
     
-        let products = Containers.generate20StaticProducts();
-        let indexs = Containers.getIndexsOfTargetProducts(TheStartedIndex,numberOfWantedProducts);
+        let products = Products.generate20StaticProducts();
+        let indexs = Products.getIndexsOfTargetProducts(TheStartedIndex,numberOfWantedProducts);
         let allContainers = Containers.getAllContainers();
         
         for(let container of allContainers)
@@ -86,7 +48,7 @@ const Containers = {
     generateProductsAndFixItsWidth: (productsNumber)=>{
         let theStarterIndex = productsNumber;
         Containers.generateProductsInAllContainers(theStarterIndex,productsNumber);
-        Containers.changeProductsWidth(productsNumber,containerProducts());
+        Containers.changeProductsWidth(productsNumber,Products.allProducts());
     },
 
     generateProductsInContainersAccordingWindowWidth: ()=>{
@@ -128,7 +90,7 @@ const Containers = {
     
     },
     getNumberedProductByIndexFrom0To19: (TheIndexOfTheProduct)=>{
-        let product = Containers.generate20StaticProducts();
+        let product = Products.generate20StaticProducts();
         let targetProduct = product[TheIndexOfTheProduct];
 
         return targetProduct;
@@ -167,7 +129,7 @@ const Containers = {
     addNewProductToContainerFromRight: (containerObject, container)=>{
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
-        let tarqetProductIndex = Containers.getNumberFrom0To20(containerObject.index);
+        let tarqetProductIndex = Products.Math.getNumberFrom0To20(containerObject.index);
         let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
         Containers.addProductToTheEndOfAContainer(targetProduct,container);
 
@@ -182,7 +144,7 @@ const Containers = {
 
     addNewProductToContainerFromLeft: (containerObject, container)=>{
 
-        let tarqetProductIndex = Containers.getNumberFrom0To20(containerObject.index - containerObject.num);
+        let tarqetProductIndex = Products.Math.getNumberFrom0To20(containerObject.index - containerObject.num);
         let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
         Containers.addProductToTheStartOfAContainer(targetProduct, container);
 
