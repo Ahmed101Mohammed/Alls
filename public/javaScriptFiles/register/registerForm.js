@@ -64,6 +64,7 @@ let RegisterForm = {
             let response = await RegisterForm.postUserDataInRegisterRoute.mainMethod(userRegisterData);
             RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.mainMethod(response);
 
+
         },
 
         prapereTheUserRegisterData:()=>{
@@ -81,21 +82,26 @@ let RegisterForm = {
         },
 
         appearErrorMessageAccordingErrorType: {
-            mainMethod: (errorMessage)=>{
-                let errorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.createElement(errorMessage);
-                let theParentElementOferrorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.getFieldsetThatCausedTheError(errorMessage);
-                if(!theParentElementOferrorElement) return;
+            lastErrorMessageElement: ()=> document.querySelector("form .errorMessageSecondApearance"),
 
-                RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.addTheErrorElementToTheFieldset(theParentElementOferrorElement,errorElement);
+            mainMethod: (errorMessage)=>{
+                let lastErrorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.lastErrorMessageElement();
+                if(lastErrorElement) lastErrorElement.remove();
+
+                let errorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.cteateErrorElement(errorMessage);
+                
+                let theParentElementOfErrorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.getFieldsetThatCausedTheError(errorMessage);
+                if(!theParentElementOfErrorElement) return;
+
+                RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.addTheErrorElementToTheFieldset(errorElement,theParentElementOfErrorElement);
                 
             },
 
             cteateErrorElement: (errorMessage)=>{
                 let errorElement = document.createElement("div");
-                errorElement.classList.add("errorMessage");
+                errorElement.classList.add("errorMessageFirstApearance");
                 let errorMessageProperity = Object.getOwnPropertyNames(errorMessage);
-                let errorMessageString = errorElement[errorMessageProperity[0]];
-
+                let errorMessageString = errorMessage[errorMessageProperity[0]];
                 errorElement.textContent = errorMessageString;
 
                 return errorElement;
@@ -123,6 +129,15 @@ let RegisterForm = {
 
             addTheErrorElementToTheFieldset: (errorElement, fieldsetElement)=>{
                 fieldsetElement.appendChild(errorElement);
+                let errorElementContent = errorElement.textContent;
+                errorElement.textContent = "";
+
+                setTimeout(()=>{
+                    errorElement.classList.add('errorMessageSecondApearance');
+                },0)
+                setTimeout(()=>{
+                    errorElement.textContent = errorElementContent;
+                },600)
             }
 
         }

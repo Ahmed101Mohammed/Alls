@@ -126,14 +126,29 @@ form fieldset.register div:hover
 }
 
 /* Special Styles */
-.errorMessage{
-    padding: 5px;
-    color: #e0440a;
+.errorMessageFirstApearance{
+    padding: 0px;
+    color: rgba(0, 255, 255, 0);
     background-color: cyan;
-    width: fit-content;
+    width: 0px;
+    margin: 2px;
+    margin-left: 0px;
+    border-left: orangered 0px solid;
+    font-family: sans-serif;
+    font-size: 15px;
+    min-height: 0px;
+    transition-duration: 0.6s;
+}
+
+.errorMessageSecondApearance{
+    padding: 5px;
+    color: rgb(255, 51, 0);
+    background-color: cyan;
+    width: 327px;
     margin: 2px;
     margin-left: 0px;
     border-left: orangered 3px solid;
     font-family: sans-serif;
     font-size: 15px;
+    min-height: 30px;
 }
