@@ -176,10 +176,15 @@ const Containers = {
     },
 
     addNewProductToContainerFromRight: (containerObject, container)=>{
-        let theNewProduct = Containers.determineNextOrPreviouseProductOfAContainer("next", containerObject);
+        containerObject.addToIndexValue(1); // indcrease the starter index.
+
+        let products = Containers.generate20StaticProducts()
+        let tarqetProductIndex = Containers.getNumberFrom0To20(containerObject.index);
+        let targetProduct = products[tarqetProductIndex];
+
         let numberOfProductInTheContainer = containerObject.num;
 
-        container.innerHTML += theNewProduct;
+        container.innerHTML += targetProduct;
         let theNewProductAsANode = container.lastChild.previousElementSibling;
         theNewProductAsANode.style.width = `${100/numberOfProductInTheContainer}%`;
 
@@ -196,10 +201,12 @@ const Containers = {
 
     addNewProductToContainerFromLeft: (containerObject, container)=>{
         let indexOfTheTargetProduct = Containers.getNumberFrom0To20(containerObject.index - containerObject.num);
-        //let theNewProduct = Containers.determineNextOrPreviouseProductOfAContainer("", containerObject);
-        let theContainerProducts = Containers.generate20StaticProducts();
-        let theNewProduct = theContainerProducts[indexOfTheTargetProduct];
-        containerObject.addToIndexValue(-1);
+       
+        let products = Containers.generate20StaticProducts();
+        let theNewProduct = products[indexOfTheTargetProduct];
+
+        containerObject.addToIndexValue(-1); // decrease the starter index.
+
         let numberOfProductInTheContainer = containerObject.num;
 
         container.innerHTML = theNewProduct + container.innerHTML;
