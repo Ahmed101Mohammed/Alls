@@ -2,40 +2,6 @@
 const Containers = {
     getAllContainers:()=> document.querySelectorAll('div.category div.container'),
     containersObjects: [],
-    externalMethods:{
-        generateProduct: (num)=>{
-            return `
-                        <!-- product card -->
-                        <div class="product">
-
-                            <!-- product photo -->
-                            <div class="photo">
-                                <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg" alt="canone camera">
-                            </div>
-
-                            <!-- product details -->
-                            <div class="details">
-                                <!-- product title -->
-                                <h3 class="title">product title${num}</h3>
-
-                                <!-- product rate-->
-                                <div class="rate">
-                                    <i class="fa-solid fa-star s1"></i>
-                                    <i class="fa-solid fa-star s2"></i>
-                                    <i class="fa-solid fa-star s3"></i>
-                                    <i class="fa-solid fa-star s4"></i>
-                                    <i class="fa-solid fa-star s5"></i>
-                                </div>
-
-                                
-                                <span class="avilable">avilable</span>
-                                <span class="price">50$</span>
-                            </div>
-
-                        </div>
-                    `
-        }
-    },
 
     getNumberFrom0To20: (theNumber)=>{
         let number = theNumber % 20;
@@ -71,7 +37,7 @@ const Containers = {
     
         for(let productNumber = 0; productNumber < 20; productNumber++)
         {
-            products.push(Containers.externalMethods.generateProduct(productNumber + 1));
+            products.push(Products.generateProduct(productNumber + 1));
         }
     
         return products;
@@ -217,8 +183,8 @@ const Containers = {
     addNewProductToContainerFromLeft: (containerObject, container)=>{
 
         let tarqetProductIndex = Containers.getNumberFrom0To20(containerObject.index - containerObject.num);
-        let theNewProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
-        Containers.addProductToTheStartOfAContainer(theNewProduct, container);
+        let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
+        Containers.addProductToTheStartOfAContainer(targetProduct, container);
 
         containerObject.addToIndexValue(-1); // decrease the starter index.
 
