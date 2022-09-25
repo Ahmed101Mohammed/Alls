@@ -82,30 +82,44 @@ let RegisterForm = {
         },
 
         appearErrorMessageAccordingErrorType: {
-            mainMethod: (errorMassage)=>{
-                let errorElement = cteateErrorElement(errorMassage);
-
-                if("userNameError" in errorMassage)
-                {
-                    let userNameFieldset = RegisterForm.fieldsetElements.userName.htmlElement();
-                    appearTheErrorMessageInFrontEnd(userNameFieldset,errorElement);
-                }
-                else if("passwordError" in errorMassage)
-                {
-
-                }
-                else if("emailError" in errorMassage)
-                {
-                    
-                }
+            mainMethod: (errorMessage)=>{
+                let errorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.createElement(errorMessage);
+                let theFieldsetThatWillContainTheError = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.getFieldsetThatCausedTheError(errorMessage);
+                appearTheErrorMessageInFrontEnd(theFieldsetThatWillContainTheError,errorElement);
+                
             },
 
-            cteateErrorElement: (errorMassage)=>{
+            cteateErrorElement: (errorMessage)=>{
                 let errorElement = document.createElement("div");
                 errorElement.classList.add("errorMessage");
+                let errorMessageProperity = Object.getOwnPropertyNames(errorMessage);
+                let errorMessageString = errorElement[errorMessageProperity[0]];
+
+                errorElement.textContent = errorMessageString;
 
                 return errorElement;
-            }
+            },
+            
+            getFieldsetThatCausedTheError: (errorMessage)=>{
+                let theFieldsetThatCauedTheError;
+
+                if("userNameError" in errorMessage)
+                {
+                    theFieldsetThatCauedTheError = RegisterForm.fieldsetElements.userName.htmlElement();
+                    
+                }
+                else if("passwordError" in errorMessage)
+                {
+                    theFieldsetThatCauedTheError = RegisterForm.fieldsetElements.password.htmlElement();
+                }
+                else if("emailError" in errorMessage)
+                {
+                    theFieldsetThatCauedTheError = RegisterForm.fieldsetElements.email.htmlElement();
+                }
+
+                return theFieldsetThatCauedTheError;
+            },
+
 
         }
 
