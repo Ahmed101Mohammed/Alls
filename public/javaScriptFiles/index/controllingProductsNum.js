@@ -162,19 +162,6 @@ const Containers = {
     
     },
 
-    determineNextOrPreviouseProductOfAContainer: (nextOrPreviouse, containerObject)=>{
-        let theContainerProducts = Containers.generate20StaticProducts();
-        let nextOrPreviouseValue = Diarection.getDirectionValue(nextOrPreviouse);
-
-     
-        containerObject.addToIndexValue(nextOrPreviouseValue);
-
-
-        let theIndexOfProduct = Containers.getNumberFrom0To20(containerObject.index);
-
-        return theContainerProducts[theIndexOfProduct];
-    },
-
     addNewProductToContainerFromRight: (containerObject, container)=>{
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
