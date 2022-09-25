@@ -74,4 +74,12 @@ const Products = {
     
         return products;
     },
+
+    changeProductsWidthAcordingProductsNumper: (productsNumber)=>{
+        let products = Products.allProducts();
+        for(let product of products)
+        {
+            product.style.width = `${100 / productsNumber}%`;
+        }
+    },
 }

@@ -1,21 +1,16 @@
-// In this file the scripting determines the number of products in the Categories parts.
 const Containers = {
+    
     getAllContainers:()=> document.querySelectorAll('div.category div.container'),
     containersObjects: [],
-
-    
 
     createContainerObject: (containerElement,TheStartedIndex,numberOfWantedProducts)=>{
         let id = containerElement.parentElement.id;
         Containers.containersObjects[Number(id)] = new Container();
         Containers.containersObjects[Number(id)].index = TheStartedIndex - 1;
         Containers.containersObjects[Number(id)].num = numberOfWantedProducts;
-        
-
     },
 
     addTargetProductsToTheContainer: (indexsOfTargetProducts,productsList,theContainer)=>{
-
         for(let index = indexsOfTargetProducts.length-1 ; index > -1; index--)
             {
                 theContainer.innerHTML += productsList[indexsOfTargetProducts[index]];
@@ -24,7 +19,6 @@ const Containers = {
 
     generateProductsInAllContainers: (TheStartedIndex,numberOfWantedProducts)=>{
 
-    
         let products = Products.generate20StaticProducts();
         let indexs = Products.getIndexsOfTargetProducts(TheStartedIndex,numberOfWantedProducts);
         let allContainers = Containers.getAllContainers();
@@ -34,21 +28,13 @@ const Containers = {
             Containers.createContainerObject(container,TheStartedIndex,numberOfWantedProducts);
             container.innerHTML = '';
             Containers.addTargetProductsToTheContainer(indexs,products,container);
-        }
-            
-    },
-
-    changeProductsWidth: (numOfProducts, products)=>{
-        for(let product of products)
-        {
-            product.style.width = `${100 / numOfProducts}%`;
-        }
+        }    
     },
 
     generateProductsAndFixItsWidth: (productsNumber)=>{
         let theStarterIndex = productsNumber;
         Containers.generateProductsInAllContainers(theStarterIndex,productsNumber);
-        Containers.changeProductsWidth(productsNumber,Products.allProducts());
+        Products.changeProductsWidthAcordingProductsNumper(productsNumber);
     },
 
     generateProductsInContainersAccordingWindowWidth: ()=>{
