@@ -161,13 +161,18 @@ const Containers = {
         }
     
     },
+    getNumberedProductByIndexFrom0To19: (TheIndexOfTheProduct)=>{
+        let product = Containers.generate20StaticProducts();
+        let targetProduct = product[TheIndexOfTheProduct];
+
+        return targetProduct;
+    },
 
     addNewProductToContainerFromRight: (containerObject, container)=>{
         containerObject.addToIndexValue(1); // indcrease the starter index.
 
-        let products = Containers.generate20StaticProducts()
         let tarqetProductIndex = Containers.getNumberFrom0To20(containerObject.index);
-        let targetProduct = products[tarqetProductIndex];
+        let targetProduct = Containers.getNumberedProductByIndexFrom0To19(tarqetProductIndex);
 
         let numberOfProductInTheContainer = containerObject.num;
 
@@ -189,8 +194,8 @@ const Containers = {
     addNewProductToContainerFromLeft: (containerObject, container)=>{
         let indexOfTheTargetProduct = Containers.getNumberFrom0To20(containerObject.index - containerObject.num);
        
-        let products = Containers.generate20StaticProducts();
-        let theNewProduct = products[indexOfTheTargetProduct];
+        
+        let theNewProduct = Containers.getNumberedProductByIndexFrom0To19(indexOfTheTargetProduct);
 
         containerObject.addToIndexValue(-1); // decrease the starter index.
 
