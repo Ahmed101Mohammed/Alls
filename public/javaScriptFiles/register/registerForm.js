@@ -62,9 +62,8 @@ let RegisterForm = {
         mainMethod: async()=>{
             let userRegisterData = RegisterForm.sendUserRegisterDataToTheServer.prapereTheUserRegisterData();
             let response = await RegisterForm.postUserDataInRegisterRoute.mainMethod(userRegisterData);
-            
+            RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.mainMethod(response);
 
-            return response;
         },
 
         prapereTheUserRegisterData:()=>{
@@ -84,8 +83,10 @@ let RegisterForm = {
         appearErrorMessageAccordingErrorType: {
             mainMethod: (errorMessage)=>{
                 let errorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.createElement(errorMessage);
-                let theFieldsetThatWillContainTheError = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.getFieldsetThatCausedTheError(errorMessage);
-                appearTheErrorMessageInFrontEnd(theFieldsetThatWillContainTheError,errorElement);
+                let theParentElementOferrorElement = RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.getFieldsetThatCausedTheError(errorMessage);
+                if(!theParentElementOferrorElement) return;
+
+                RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.addTheErrorElementToTheFieldset(theParentElementOferrorElement,errorElement);
                 
             },
 
@@ -120,6 +121,9 @@ let RegisterForm = {
                 return theFieldsetThatCauedTheError;
             },
 
+            addTheErrorElementToTheFieldset: (errorElement, fieldsetElement)=>{
+                fieldsetElement.appendChild(errorElement);
+            }
 
         }
 
