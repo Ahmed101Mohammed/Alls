@@ -51,7 +51,12 @@ class RegisterPage
     }
 
 
-   
+    async sendUserRegisterDataToTheServer()
+    {
+        let userRegisterData = RegisterForm.sendUserRegisterDataToTheServer.prapereTheUserRegisterData();
+        let response = await RegisterForm.postUserDataInRegisterRoute.mainMethod(userRegisterData);
+        RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.mainMethod(response);
+    }
 }
 
 let myRegisterPage = new RegisterPage();
