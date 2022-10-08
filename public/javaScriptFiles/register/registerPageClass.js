@@ -22,6 +22,21 @@ class RegisterPage
         return document.querySelector('#pssw').value;
     }
 
+
+    async handlingErrorOfTurnTheRespondToJsonFunctionality(theResponse)
+    {
+        let theResponseInJson;
+        try{
+            const responseMessage = await theResponse.json();
+            theResponseInJson = responseMessage;
+        }
+        catch(e)
+        {
+            theResponseInJson = {"readingResponseError":"Field to read the response"};
+        }
+        return theResponseInJson;
+    }
+
 }
 
 let myRegisterPage = new RegisterPage();
