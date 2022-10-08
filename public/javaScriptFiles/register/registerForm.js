@@ -145,4 +145,4 @@ let RegisterForm = {
     }
 }
 
-RegisterForm.fieldsetElements.register.registerButton().addEventListener('click',RegisterForm.sendUserRegisterDataToTheServer.mainMethod)
+RegisterForm.fieldsetElements.register.registerButton().addEventListener('click',RegisterForm.sendUserRegisterDataToTheServer.mainMethod);
