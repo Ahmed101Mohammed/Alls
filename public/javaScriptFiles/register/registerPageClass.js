@@ -51,6 +51,19 @@ class RegisterPage
     }
 
 
+    #appearErrorMessageAccordingErrorType()
+    {
+        let lastErrorElement = this.lastErrorMessageElement();
+        if(lastErrorElement) lastErrorElement.remove();
+
+        let errorElement = this.cteateErrorElement(errorMessage);
+                
+        let theParentElementOfErrorElement = this.getFieldsetThatCausedTheError(errorMessage);
+        if(!theParentElementOfErrorElement) return;
+
+        this.addTheErrorElementToTheFieldset(errorElement,theParentElementOfErrorElement);
+    }
+
     prapereTheUserRegisterData()
     {
         const userNameValue = this.userNameValue();
@@ -70,7 +83,7 @@ class RegisterPage
     {
         let userRegisterData = this.prapereTheUserRegisterData();
         let response = await this.postUserDataInRegisterRoute(userRegisterData);
-        this.appearErrorMessageAccordingErrorType(response);
+        this.#appearErrorMessageAccordingErrorType(response);
     }
 }
 
