@@ -51,6 +51,27 @@ class RegisterPage
     }
 
 
+    getFieldsetThatCausedTheError(errorMessage)
+    {
+        let theFieldsetThatCausedTheError;
+
+        if("userNameError" in errorMessage)
+        {
+            theFieldsetThatCausedTheError = documet.querySelector('fieldset.user-name');
+            
+        }
+        else if("passwordError" in errorMessage)
+        {
+            theFieldsetThatCausedTheError = documet.querySelector('fieldset.email');
+        }
+        else if("emailError" in errorMessage)
+        {
+            theFieldsetThatCausedTheError = documet.querySelector('fieldset.pssw');
+        }
+
+        return theFieldsetThatCausedTheError;
+    }
+
     cteateErrorElement(errorMessage)
     {
         let errorElement = document.createElement("div");
