@@ -36,7 +36,7 @@ class RegisterPage
         }
         return theResponseInJson;
     }
-    
+
     async postUserDataInRegisterRoute(userRegisterData)
     {
         const response = await fetch('/register',{
@@ -51,11 +51,26 @@ class RegisterPage
     }
 
 
+    prapereTheUserRegisterData()
+    {
+        const userNameValue = this.userNameValue();
+        const emailValue = this.emailValue();
+        const passwordValue = this.passwordValue();
+        
+        const userRegisterData = {
+            userName: userNameValue,
+            email: emailValue,
+            password: passwordValue
+        };
+
+        return userRegisterData;
+    }
+
     async sendUserRegisterDataToTheServer()
     {
-        let userRegisterData = RegisterForm.sendUserRegisterDataToTheServer.prapereTheUserRegisterData();
-        let response = await RegisterForm.postUserDataInRegisterRoute.mainMethod(userRegisterData);
-        RegisterForm.sendUserRegisterDataToTheServer.appearErrorMessageAccordingErrorType.mainMethod(response);
+        let userRegisterData = this.prapereTheUserRegisterData();
+        let response = await this.postUserDataInRegisterRoute(userRegisterData);
+        this.appearErrorMessageAccordingErrorType(response);
     }
 }
 
