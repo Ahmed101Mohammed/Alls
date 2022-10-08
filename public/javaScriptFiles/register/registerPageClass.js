@@ -36,7 +36,22 @@ class RegisterPage
         }
         return theResponseInJson;
     }
+    
+    async postUserDataInRegisterRoute(userRegisterData)
+    {
+        const response = await fetch('/register',{
+            method:'POST',
+            credentials:'same-origin',
+            headers:{'Content-Type': 'application/json',},
+            body: JSON.stringify(userRegisterData),
+        })
 
+        let theResponseInJsonStructure = await this.handlingErrorOfTurnTheRespondToJsonFunctionality(response);
+        return theResponseInJsonStructure;
+    }
+
+
+   
 }
 
 let myRegisterPage = new RegisterPage();
