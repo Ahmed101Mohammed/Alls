@@ -51,6 +51,20 @@ class RegisterPage
     }
 
 
+    addTheErrorElementToTheFieldsetElement(errorElement, fieldsetElement)
+    {
+        fieldsetElement.appendChild(errorElement);
+        let errorElementContent = errorElement.textContent;
+        errorElement.textContent = "";
+
+        setTimeout(()=>{
+            errorElement.classList.add('errorMessageSecondApearance');
+        },0)
+        setTimeout(()=>{
+            errorElement.textContent = errorElementContent;
+        },600)
+    }
+
     getFieldsetThatCausedTheError(errorMessage)
     {
         let theFieldsetThatCausedTheError;
@@ -98,7 +112,7 @@ class RegisterPage
         let theParentElementOfErrorElement = this.getFieldsetThatCausedTheError(errorMessage);
         if(!theParentElementOfErrorElement) return;
 
-        this.addTheErrorElementToTheFieldset(errorElement,theParentElementOfErrorElement);
+        this.addTheErrorElementToTheFieldsetElement(errorElement,theParentElementOfErrorElement);
     }
 
     prapereTheUserRegisterData()
