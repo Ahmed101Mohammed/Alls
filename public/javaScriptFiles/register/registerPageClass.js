@@ -22,11 +22,6 @@ class RegisterPage
         return document.querySelector('#pssw').value;
     }
 
-    get lastErrorMessageElement()
-    {
-        return document.querySelector("form .errorMessageSecondApearance");
-    }
-
 
     async handlingErrorOfTurnTheRespondToJsonFunctionality(theResponse)
     {
@@ -55,6 +50,22 @@ class RegisterPage
         return theResponseInJsonStructure;
     }
 
+
+    cteateErrorElement(errorMessage)
+    {
+        let errorElement = document.createElement("div");
+        errorElement.classList.add("errorMessageFirstApearance");
+        let errorMessageProperity = Object.getOwnPropertyNames(errorMessage);
+        let errorMessageString = errorMessage[errorMessageProperity[0]];
+        errorElement.textContent = errorMessageString;
+
+        return errorElement;
+    }
+
+    get lastErrorMessageElement()
+    {
+        return document.querySelector("form .errorMessageSecondApearance");
+    }
 
     #appearErrorMessageAccordingErrorType()
     {
