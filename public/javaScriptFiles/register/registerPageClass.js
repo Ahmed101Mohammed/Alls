@@ -22,6 +22,11 @@ class RegisterPage
         return document.querySelector('#pssw').value;
     }
 
+    get lastErrorMessageElement()
+    {
+        return document.querySelector("form .errorMessageSecondApearance");
+    }
+
 
     async handlingErrorOfTurnTheRespondToJsonFunctionality(theResponse)
     {
