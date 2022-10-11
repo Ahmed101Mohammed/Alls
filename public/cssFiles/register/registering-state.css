@@ -62,3 +62,8 @@
     color: #ff7c00;
     font-size: 17px;
 }
+
+.btn-move-to-sign-page:hover
+{
+    background-color: transparent;
+}
