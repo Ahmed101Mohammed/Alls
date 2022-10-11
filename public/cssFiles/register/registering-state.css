@@ -19,3 +19,15 @@
     background-color: white;
     border-radius: 50px;
 }
+
+.successful-message-container
+{
+    width: 678px;
+    height: 678px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 21px #00803b solid;
+    flex-wrap: wrap;
+}
