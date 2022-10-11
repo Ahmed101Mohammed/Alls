@@ -105,7 +105,7 @@ function RegisterPage()
             return document.querySelector("form .errorMessageSecondApearance");
         }
 
-        this.appearSuccessfulAndFieldRigistringMessages = (responseMessage) =>
+        this.appearSuccessfulAndFieledRigistringMessages = (responseMessage) =>
         {
             let responseMessageInString = this.getResponseMessageInString(responseMessage);
 
