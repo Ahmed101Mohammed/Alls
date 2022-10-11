@@ -35,9 +35,20 @@
 .successful-message-title
 {
     display: block;
-    width: 80%;
+    width: 100%;
     font-size: 100px;
     text-align: center;
     color: green;
     font-family: sans-serif;
+}
+
+.successful-message
+{
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+    margin-top: -298px;
+    color: #3fa554;
+    font-size: 18px;
 }
