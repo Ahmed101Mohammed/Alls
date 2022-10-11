@@ -105,6 +105,21 @@ function RegisterPage()
             return document.querySelector("form .errorMessageSecondApearance");
         }
 
+        this.appearSuccessfulAndFieldRigistringMessages = (responseMessage) =>
+        {
+            let responseMessageInString = this.getResponseMessageInString(responseMessage);
+
+            if('serverError' in responseMessage)
+            {
+                
+            }
+
+            else if('successRegister' in responseMessage)
+            {
+
+            }
+        }
+
         this.appearErrorMessageAccordingErrorType = (errorMessage) =>
         {
             let lastErrorElement = this.getLastErrorMessageElement();
