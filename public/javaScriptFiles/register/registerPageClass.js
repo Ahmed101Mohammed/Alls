@@ -1,26 +1,25 @@
 function RegisterPage()
 {
-    let registerPageObject = {
-        registerButton: document.querySelector('fieldset.register div.register'),
+        this.registerButton = document.querySelector('fieldset.register div.register'),
 
 
-        getUserNameValue()
+        this.getUserNameValue = ()=>
         {
             return document.querySelector('#user-name').value;
-        },
+        }
 
-        getEmailValue()
+        this.getEmailValue = ()=>
         {
             return document.querySelector('#email').value;
-        },
+        }
 
-        getPasswordValue()
+        this.getPasswordValue = ()=>
         {
             return document.querySelector('#pssw').value;
-        },
+        }
 
 
-        async handlingErrorOfTurnTheRespondToJsonFunctionality(theResponse)
+        this.handlingErrorOfTurnTheRespondToJsonFunctionality = async (theResponse)=>
         {
             let theResponseInJson;
             try{
@@ -32,9 +31,9 @@ function RegisterPage()
                 theResponseInJson = {"readingResponseError":"Field to read the response"};
             }
             return theResponseInJson;
-        },
+        }
 
-        async postUserDataInRegisterRoute(userRegisterData)
+        this.postUserDataInRegisterRoute = async (userRegisterData) =>
         {
             const response = await fetch('/register',{
                 method:'POST',
@@ -43,12 +42,12 @@ function RegisterPage()
                 body: JSON.stringify(userRegisterData),
             })
 
-            let theResponseInJsonStructure = await myRegisterPage.handlingErrorOfTurnTheRespondToJsonFunctionality(response);
+            let theResponseInJsonStructure = await this.handlingErrorOfTurnTheRespondToJsonFunctionality(response);
             return theResponseInJsonStructure;
-        },
+        }
 
 
-        addTheErrorElementToTheFieldsetElement(errorElement, fieldsetElement)
+        this.addTheErrorElementToTheFieldsetElement = (errorElement, fieldsetElement) =>
         {
             fieldsetElement.appendChild(errorElement);
             let errorElementContent = errorElement.textContent;
@@ -60,9 +59,9 @@ function RegisterPage()
             setTimeout(()=>{
                 errorElement.textContent = errorElementContent;
             },600)
-        },
+        }
 
-        getFieldsetThatCausedTheError(errorMessage)
+        this.getFieldsetThatCausedTheError = (errorMessage)=>
         {
             let theFieldsetThatCausedTheError;
 
@@ -82,9 +81,9 @@ function RegisterPage()
             }
 
             return theFieldsetThatCausedTheError;
-        },
+        }
 
-        cteateErrorElement(errorMessage)
+        this.cteateErrorElement = (errorMessage) =>
         {
             let errorElement = document.createElement("div");
             errorElement.classList.add("errorMessageFirstApearance");
@@ -93,32 +92,32 @@ function RegisterPage()
             errorElement.textContent = errorMessageString;
 
             return errorElement;
-        },
+        }
 
-        getLastErrorMessageElement()
+        this.getLastErrorMessageElement = () =>
         {
             return document.querySelector("form .errorMessageSecondApearance");
-        },
+        }
 
-        appearErrorMessageAccordingErrorType(errorMessage)
+        this.appearErrorMessageAccordingErrorType = (errorMessage) =>
         {
-            let lastErrorElement = myRegisterPage.getLastErrorMessageElement();
+            let lastErrorElement = this.getLastErrorMessageElement();
             if(lastErrorElement) lastErrorElement.remove();
 
-            let errorElement = myRegisterPage.cteateErrorElement(errorMessage);
+            let errorElement = this.cteateErrorElement(errorMessage);
                     
-            let theParentElementOfErrorElement = myRegisterPage.getFieldsetThatCausedTheError(errorMessage);
+            let theParentElementOfErrorElement = this.getFieldsetThatCausedTheError(errorMessage);
             if(!theParentElementOfErrorElement) return;
 
-            myRegisterPage.addTheErrorElementToTheFieldsetElement(errorElement,theParentElementOfErrorElement);
-        },
+            this.addTheErrorElementToTheFieldsetElement(errorElement,theParentElementOfErrorElement);
+        }
 
 
-        prapereTheUserRegisterData()
+        this.prapereTheUserRegisterData = () =>
         {
-            const userNameValue = myRegisterPage.getUserNameValue();
-            const emailValue = myRegisterPage.getEmailValue();
-            const passwordValue = myRegisterPage.getPasswordValue();
+            const userNameValue = this.getUserNameValue();
+            const emailValue = this.getEmailValue();
+            const passwordValue = this.getPasswordValue();
             
             const userRegisterData = {
                 userName: userNameValue,
@@ -127,21 +126,16 @@ function RegisterPage()
             };
 
             return userRegisterData;
-        },
+        }
 
 
-        async sendUserRegisterDataToTheServer()
+        this.sendUserRegisterDataToTheServer = async () =>
         {
-            let userRegisterData = myRegisterPage.prapereTheUserRegisterData();
-            console.log({userRegisterData})
-            let response = await myRegisterPage.postUserDataInRegisterRoute(userRegisterData);
-            myRegisterPage.appearErrorMessageAccordingErrorType(response);
-        },
-    }
-    return registerPageObject;
+            let userRegisterData = this.prapereTheUserRegisterData();
+            let response = await this.postUserDataInRegisterRoute(userRegisterData);
+            this.appearErrorMessageAccordingErrorType(response);
+        }
 }
 
-let myRegisterPage = RegisterPage();
-console.log(myRegisterPage)
-
+let myRegisterPage = new RegisterPage();
 myRegisterPage.registerButton.addEventListener('click',myRegisterPage.sendUserRegisterDataToTheServer);
