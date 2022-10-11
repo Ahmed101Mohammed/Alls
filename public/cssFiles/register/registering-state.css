@@ -5,3 +5,14 @@
     height: 100%;
     background-color: rgba(136, 124, 124, 0.452);
 }
+
+.successful-register
+{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50px;
+}
