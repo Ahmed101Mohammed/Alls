@@ -31,3 +31,13 @@
     border: 21px #00803b solid;
     flex-wrap: wrap;
 }
+
+.successful-message-title
+{
+    display: block;
+    width: 80%;
+    font-size: 100px;
+    text-align: center;
+    color: green;
+    font-family: sans-serif;
+}
