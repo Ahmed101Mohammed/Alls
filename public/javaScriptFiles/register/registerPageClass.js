@@ -83,12 +83,18 @@ function RegisterPage()
             return theFieldsetThatCausedTheError;
         }
 
+        this.getResponseMessageInString = (response) =>
+        {
+            let errorMessageProperity = Object.getOwnPropertyNames(response);
+            let errorMessageString = response[errorMessageProperity[0]];
+            return errorMessageString
+        }
+
         this.cteateErrorElement = (errorMessage) =>
         {
             let errorElement = document.createElement("div");
             errorElement.classList.add("errorMessageFirstApearance");
-            let errorMessageProperity = Object.getOwnPropertyNames(errorMessage);
-            let errorMessageString = errorMessage[errorMessageProperity[0]];
+            let errorMessageString = this.getResponseMessageTypeInString(errorMessage);
             errorElement.textContent = errorMessageString;
 
             return errorElement;
@@ -133,7 +139,9 @@ function RegisterPage()
         {
             let userRegisterData = this.prapereTheUserRegisterData();
             let response = await this.postUserDataInRegisterRoute(userRegisterData);
+            this.getResponseMessageTypeInString(response);
             this.appearErrorMessageAccordingErrorType(response);
+
         }
 }
 
