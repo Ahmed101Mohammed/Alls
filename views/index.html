@@ -38,37 +38,35 @@
         <!-- header part -->
         <header>
 
-            <!-- webSite title -->
             <h1>Alls</h1>
 
-            <!-- search form part -->
             <form>
                 <input type="text" placeholder="Search about products">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </form>
 
-            <!-- sign button -->
-                <div class="sign">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    Sign
-                </div>
+            <div class="sign">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Sign
+            </div>
 
-            <!-- sign out -->
+            <!-- should apear in authmode -->
             <div class="sign-out none">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 Sign Out
             </div>
 
-            <!-- cart -->
+            <!-- should apear in authmode -->
             <div class="cart none">
                 <span>0</span>
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
 
-            <!-- personal page -->
+            <!-- should apear in authmode -->
             <div class="personal-page none">
                 <i class="fa-solid fa-user"></i>
             </div>
+
             <!-- nave par appear when the window size being small less than 600px -->
             <div class="nav-phone">
                 <span class="first"></span>
@@ -90,15 +88,16 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     Cart
                 </li>
+
                 <li class="sign">
                     <i class="fa-solid fa-right-to-bracket"></i>
                     Sign
                 </li>
+
                 <li class="sign-out none">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     Sign Out
                 </li>
-                
             </ul>
         </nav>
 
@@ -108,23 +107,18 @@
             <!-- categories -->
             <div id="0" class="category">
 
-                <!-- category title -->
                 <h2 class="title">Category Title</h2>
 
-                <!-- products container -->
                 <div class="container">
 
-                        <!-- product photo -->
+                    <div class="product">
+
                         <div class="photo">
                             <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg" alt="canone camera">
                         </div>
 
-                        <!-- product details -->
                         <div class="details">
-                            <!-- product title -->
                             <h3 class="title">product title</h3>
-
-                            <!-- product rate-->
                             <div class="rate">
                                 <i class="fa-solid fa-star s1"></i>
                                 <i class="fa-solid fa-star s2"></i>
@@ -132,21 +126,17 @@
                                 <i class="fa-solid fa-star s4"></i>
                                 <i class="fa-solid fa-star s5"></i>
                             </div>
-
-                            <!-- product state -->
                             <span class="avilable">avilable</span>
-
-                            <!-- product price -->
                             <span class="price">50$</span>
                         </div>
 
+                    </div>
+
                 </div>
-                <!-- right angle -->
+                
                 <div class='right-angle'>
                     <i class="fa-solid fa-angle-right"></i>
                 </div>
-
-                <!-- left angle -->
                 <div class='left-angle'>
                     <i class="fa-solid fa-angle-left"></i>
                 </div>
@@ -156,26 +146,19 @@
             <!-- categories -->
             <div id="1" class="category">
 
-                <!-- category title -->
                 <h2 class="title">Category Title</h2>
 
-                <!-- products container -->
                 <div class="container">
 
-                    <!-- product card -->
                     <div class="product">
 
-                        <!-- product photo -->
                         <div class="photo">
                             <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg" alt="canone camera">
                         </div>
 
-                        <!-- product details -->
                         <div class="details">
-                            <!-- product title -->
-                            <h3 class="title">product title</h3>
 
-                            <!-- product rate-->
+                            <h3 class="title">product title</h3>
                             <div class="rate">
                                 <i class="fa-solid fa-star s1"></i>
                                 <i class="fa-solid fa-star s2"></i>
@@ -183,29 +166,26 @@
                                 <i class="fa-solid fa-star s4"></i>
                                 <i class="fa-solid fa-star s5"></i>
                             </div>
-
-                            <!-- product state -->
                             <span class="avilable">avilable</span>
-
-                            <!-- product price -->
                             <span class="price">50$</span>
+
                         </div>
 
                     </div>
                     
                 </div>
-                <!-- right angle -->
+
                 <div class='angle right-angle'>
                     <i class="fa-solid fa-angle-right"></i>
                 </div>
-
-                <!-- right angle -->
                 <div class='angle left-angle'>
                     <i class="fa-solid fa-angle-left"></i>
                 </div>
                     
             </div>
+
         </main>
+
         <script src="/library/frontEndLibrary.js" type="module"></script>
         <script src="/javaScriptFiles/index/domElements.js"></script>
         <script src="/javaScriptFiles/index/productsObject.js" type="module"></script>
@@ -213,5 +193,6 @@
         <script src="/javaScriptFiles/index/containersObject.js" type="module"></script>
         <script src="/javaScriptFiles/index/anglesObject.js"  type="module"></script>
         <script src="/javaScriptFiles/header.js"></script>
+
     </body>
 </html>
