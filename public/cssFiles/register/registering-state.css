@@ -116,12 +116,24 @@
 
 @media (max-width: 540px) 
 {
+    .successful-register 
+    {
+        height: 70%;
+    }
+
     .successful-message-title {
         font-size: 60px;
     }  
     
     .successful-message
     {
-        width: 67%;
+        width: 70%;
     }
+}
+
+@media (max-width: 350px) 
+{
+    .successful-message-title {
+        font-size: 35px;
+    }  
 }
