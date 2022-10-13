@@ -1,4 +1,4 @@
-import { Containers } from "./controllingProductsNum.js";
+import { Containers } from "./containersObject.js";
 import { FEL } from "../../library/frontEndLibrary.js";
 
 const Angles = {
