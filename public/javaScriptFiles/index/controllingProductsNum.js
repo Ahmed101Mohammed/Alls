@@ -1,7 +1,7 @@
 import Container from './containerClass.js';
+import {Products} from './productsObject.js';
 
 export const Containers = {
-
     getAllContainers:()=> document.querySelectorAll('div.category div.container'),
     containersObjects: [],
 
@@ -55,7 +55,7 @@ export const Containers = {
         let products = Products.generate20StaticProducts();
         let indexs = Products.getIndexsOfTargetProducts(TheStartedIndex,numberOfWantedProducts);
         let allContainers = Containers.getAllContainers();
-        
+
         for(let container of allContainers)
         {
             Containers.createContainerObject(container,TheStartedIndex,numberOfWantedProducts);

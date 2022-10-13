@@ -1,5 +1,4 @@
-
-const Products = {
+export const Products = {
     Math: {
         getNumberFrom0To20: (theNumber)=>{
             let number = theNumber % 20;
