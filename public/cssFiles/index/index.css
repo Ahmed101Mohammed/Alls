@@ -1,5 +1,3 @@
-/* body style OPEN */
-
 body
 {
     display: flex;
@@ -8,15 +6,13 @@ body
     align-content: flex-start;
 }
 
-    /* main part of the home page style OPEN */
-
 main
 {
     width: 90%;
     padding-top: 20px;
     top:80px
 }
-        /* catogery style OPEN */
+
 main div.category
 {
     width: 100%;
@@ -25,15 +21,13 @@ main div.category
     margin-bottom: 20px;
     position: relative;
 }
-            /* category title style OPEN */
+
 main div.category h2.title
 {
     font-family: monospace;
     font-size: 22px;
 }
-            /* category title style CLOSE */
 
-            /* products container OPEN */
 main div.category div.container
 {
     width: 100%;
@@ -42,9 +36,7 @@ main div.category div.container
     display: flex;
     overflow: hidden;
 }
-            /* products container CLOSE */
 
-            /* angle tight style OPEN */
 main div.category div.right-angle
 {
     position: absolute;
@@ -59,9 +51,7 @@ main div.category div.right-angle
     cursor: pointer;
     display: none;
 }
-            /* angle tight style CLOSE */
 
-/* angle tight style OPEN */
 main div.category div.left-angle
 {
     position: absolute;
@@ -76,7 +66,3 @@ main div.category div.left-angle
     cursor: pointer;
     display: none;
 }
-            /* angle tight style CLOSE */
-        /* catogery style CLOSE */
-    /* main part of the home page style CLOSE */
-/* body style CLOSE */

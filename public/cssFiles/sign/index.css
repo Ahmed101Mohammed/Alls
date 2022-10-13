@@ -1,11 +1,8 @@
-/* html style OPEN */
 html
 {
     height: 100%;
 }
-/* html style CLOSE */
 
-/* body style OPEN */
 body
 {
     display: flex;
@@ -13,9 +10,7 @@ body
     align-items: center;
     height: 100%;
 }
-/* body style CLOSE */
 
-/* form style OPEN */
 form
 {
     width: 447px;
@@ -24,13 +19,12 @@ form
     padding: 20px;
 }
 
-    /* fieldset style OPEN */
 form fieldset
 {
     border: none;
     margin-bottom: 20px;
 }
-        /* labal style OPEN */
+
 form fieldset label
 {
     display: block;
@@ -38,9 +32,7 @@ form fieldset label
     font-family: monospace;
     font-size: 17px;
 }
-        /* lebal style CLOSE */
 
-        /* input style OPEN */
 form fieldset input
 {
     width: 80%;
@@ -50,9 +42,7 @@ form fieldset input
     color: darkblue;
     margin-top: 5px;
 }
-        /* input style CLOSE */
 
-        /* icon style OPEN */
 form fieldset i
 {
     background-color: #cfe1de;
@@ -64,37 +54,32 @@ form fieldset i
     margin-left: -3px;
     color: blueviolet;
 }
-        /* icon style CLOSE */
-    /* fildset style CLOSE */
-    /* hr style OPEN */
+
 hr
 {
     border-top-color: #00ff3f;
     border-bottom-color: #b6ffaf;
     margin-bottom: 20px;
 }
-    /* hr style CLOSE */
-    /* register and login fieldset style OPEN */
+
 form fieldset.register
 {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
-        /* reqister link style OPEN */
+
 form fieldset.register a
 {
     color: dimgray;
     text-decoration: none;
 }
-            /* register link hover style OPEN */
+
 form fieldset.register a:hover
 {
     color: purple;
 }
-            /* register link hover style OPEN */
-        /* register link style CLOSE */
-        /* login button style OPEN */
+
 form fieldset.register div
 {
     width: 110px;
@@ -107,15 +92,11 @@ form fieldset.register div
     color: white;
     cursor: pointer;
 }
-            /* login button hover effect style OPEN */
+
 form fieldset.register div:hover
 {
     background-color: indigo;
 }
-            /* register button hover effect style CLOSE */
-        /* register button style CLOSE */
-    /* register and login fieldset style CLOSE */
-/* form style CLOSE */
 
 
 /* media queries */
@@ -123,45 +104,35 @@ form fieldset.register div:hover
     /* max-width: 200px */
 @media (max-width: 200px) 
 {
-        /* form inputs icons style OPEN */
     form fieldset i
     {
        display: none !important;
     }
-        /* form inputs icons  style CLOSE */
 
-        /* form inputs style OPEN */
     form fieldset input
     {
         width: 100%;
     }
-        /* form inputs style CLOSE */
 }
 
     /* max 400px */
 @media (max-width:400px) 
 {
-    /* form style OPEN */
     form
     {
         height: 335px;
         position: relative;
     }
 
-        
-        /* refister fieldset style OPEN */
     form fieldset.register
     {
         display: block;
     }
-            /* register linke style OPEN */
+
     form fieldset.register a
     {
         position: absolute;
         bottom: 65px;
     }
-            /* register linke style CLOSE */
-        /* refister fieldset style CLOSE */
-    /* form style CLOSE */
 }
 

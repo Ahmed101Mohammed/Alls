@@ -1,4 +1,3 @@
-/* header style OPEN */
 header {
     width: 100%;
     padding: 20px;
@@ -13,15 +12,12 @@ header {
     z-index: 1;
 }
 
-    /* webSite title styel OPEN */
 h1
 {
     font-family: 'DynaPuff', cursive;
     color: blueviolet;
 }
-    /* webSite title styel CLOSE */
 
-    /* search form style OPEN */
 form
 {
     height: 100%;
@@ -29,7 +25,7 @@ form
     display: flex;
     align-items: center;
 }
-        /* search input styel OPEN */
+       
 form input
 {
     height: 35px;
@@ -39,9 +35,7 @@ form input
     font-family: 'Open Sans', sans-serif;
     
 }
-        /* search input styel CLOSE */
 
-        /* search icon styel OPEN */
 form i
 {
     color: blueviolet;
@@ -55,11 +49,7 @@ form i
     background-color: darkseagreen;
     cursor: pointer;
 }
-        /* search icon styel CLOSE */
 
-    /* search form style CLOSE */
-
-    /* sign & singOut & cart and personalPage buttons style OPEN */
 header div.sign, header div.cart, header div.personal-page, header div.sign-out
 {
     height: 100%;
@@ -72,27 +62,23 @@ header div.sign, header div.cart, header div.personal-page, header div.sign-out
     cursor: pointer;
     font-size: 18px;
 }
-        /* sign and signOut icons style OPEN */
+
 header div.sign i, header div.sign-out i
 {
     margin-right: 10px;
 }
-        /* sign and signOut icons style CLOSE */
-        /* sign and signOut buttons hover style OPEN */
+
 header div.sign:hover , div.sign-out:hover
 {
     background-color: #62adca6b;
 }
-        /* sign button hover style CLOSE */
-    /* sign & singOut & cart and personalPage buttons CLOSE */
 
-    /* cart and personal-page style OPEN */
 header div.cart, header div.personal-page
 {
     width: auto;
     background-color: rgba(128, 128, 128, 0);
 }
-        /* cart span style OPEN */
+
 header div.cart span
 {
     margin-right: 3px;
@@ -104,10 +90,7 @@ header div.cart span
     justify-content: center;
     font-size: 19px;
 }
-        /* cart span  style CLOSE */
-    /* cart and personal-page style CLOSE */
 
-    /* nav-phone style OPEN*/
 header .nav-phone
 {
     width: 50px;
@@ -121,14 +104,12 @@ header .nav-phone
     flex-direction: column;
     display: none;
 }
-    /* nav-phone hover style OPEN */
+
 header .nav-phone:hover
 {
     background-color: #8ca3a36b;
 }    
 
-    /* nav-phone hover style CLOSE */
-    /* nav-phone items style OPEN */
 header .nav-phone span
 {
     display: block;
@@ -138,19 +119,12 @@ header .nav-phone span
     transition-duration: 0.6s;
 }
 
-        /* middle span style OPEN */
 header .nav-phone .middle
 {
     width: 50%;
     transition-duration: 0.6s;
 }
-        /* middle span style Close */
-        
-    /* nav-phone items style CLOSE */
-/* nav-phone style OPEN */
-/* header style CLOSE */
 
-/* nav-par phone version OPEN */
 header+nav
 {
     
@@ -161,7 +135,7 @@ header+nav
     top: 80px;
     z-index: 1;
 }
-    /* ul style OPEN */
+
 header+nav ul
 {
     color: aliceblue;
@@ -175,7 +149,7 @@ header+nav ul
     font-family: monospace;
     padding-left: 40px;
 }
-        /* ul li items style OPEN */
+
 header+nav ul li
 {
     width: 100%;
@@ -184,20 +158,16 @@ header+nav ul li
     align-items: center;
     cursor: pointer;
 }
-            /* li hover style OPEN */
+
 header+nav ul li:hover
 {
     color: cadetblue;
 }
-            /* li icon style OPEN */
+
 header+nav ul li i
 {
     margin-right: 10px;
 }
-            /* li icon style CLOSE */
-        /* ul li items style CLOSE */
-    /* ul style CLOSE */
-/* nav-par phone version CLOSE */
 
 /* widths classes*/
 .eigty
@@ -226,76 +196,62 @@ header+nav ul li i
 {
     transform: rotate(-45deg);
 }
+
+
 /* media queries */
     /* query max-width 1350 */
 @media (max-width: 1350px) 
 {    
-    /* signOut button style OPEN */
     header div.sign-out
     {
         width: 11%;
     }
-    /* signOut button style CLOSE */
 }
 
     /* query max-width 1000 */
 @media (max-width: 1100px) 
 {
-   /* sign button style OPEN */
     header div.sign
     {
         width: 11%;
     }
-    /* sign button style CLOSE */
 
-    /* signout button style OPEN */
     header div.sign-out
     {
         width: 12%;
     }
-    /* sign button style CLOSE */
 }
 
     /* query max-width 1000 */
 @media (max-width: 900px) 
 {
-   /* sign button style OPEN */
     header div.sign
     {
         width: 12%;
     }
-    /* sign button style CLOSE */
-
-    /* signout button style OPEN */
+    
     header div.sign-out
     {
         width: 13%;
     }
-    /* sign button style CLOSE */
 }
 
 
     /* query max-width 700 */
 @media (max-width: 700px)
 {
-    /* search form style OPEN */
     form
     {
         width: 70%;
     }
-    /* search form style CLOSE */
 
-    /* sign button style OPEN */
     header div.sign
     {
         display: none;
     }
-    /* sign button style Close */
 
-    /* nav-phone style OPEN*/
     header .nav-phone
     {
         display: flex;
     }
-    /* nav-phone style CLOSE*/
 }

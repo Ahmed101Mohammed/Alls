@@ -65,7 +65,6 @@ let phoneVersion = {
     
 }
 
-
 // Dom Elements:
 const signButton = document.querySelector('header div.sign');
 
@@ -73,7 +72,6 @@ const signButton = document.querySelector('header div.sign');
 const openSignPage = ()=>{
     window.open('/sign','_self')
 } 
-
 
 // Add hover ListenerEvent for navParControllerInPhoneVersion element:
 phoneVersion.navParButton.htmlElement.addEventListener('mouseover',phoneVersion.navParButton.lessTheWidthOfMiddleSpan);

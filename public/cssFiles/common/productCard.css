@@ -1,4 +1,3 @@
-/* product card style OPEN */
 div.product
 {
     height: 100%;
@@ -18,24 +17,18 @@ div.product
 
 }
 
-    /* product photo style OPEN */
 div.product div.photo
 {
     width: 100%;
     height: 60%;
 }
 
-        /* img style OPEN */
 div.product div.photo img
 {
     width: 100%;
     height: 100%;
 }
-        /* img style CLOSE */
 
-    /* product photo style CLOSE */
-
-    /* product details styel OPEN */
 div.product div.details
 {
     display: grid;
@@ -45,16 +38,13 @@ div.product div.details
     padding: 5px;
 }
 
-        /* product title style OPEN */
 div.product div.details h3.title
 {
     grid-column: 1 / 3;
     font-family: 'Aboreto', cursive;
     
 }
-        /* product title style CLOSE */
 
-        /* product rate style OPEN */
 div.product div.details div.rate
 {
     grid-column: 1 / 3;
@@ -68,36 +58,7 @@ div.product div.details div.rate
     height: 22px;
     width: 108px;
 }
-            /* product rate icons style OPEN */
-/* div.product div.details div.rate i.s1
-{
-    color:gold;
-}
 
-div.product div.details div.rate i.s2
-{
-    color:gold;
-}
-
-div.product div.details div.rate i.s3
-{
-    color:gold;
-}
-
-div.product div.details div.rate i.s4
-{
-    color:gold;
-}
-
-div.product div.details div.rate i.s5
-{
-    color:gold;
-} */
-            /* product rate icons style CLOSE */
-
-        /* product rate style CLOSE */
-
-        /* product avilable style OPEN */
 div.product div.details span.avilable
 {
     background-color: #6cffdb;
@@ -108,9 +69,7 @@ div.product div.details span.avilable
     font-size: 17px;
     font-family: sans-serif;
 }
-        /* product avilable style CLOSE */
 
-        /* product price style OPEN */
 div.product div.details span.price
 {
     text-align: center;
@@ -118,11 +77,7 @@ div.product div.details span.price
     padding: 5px;
     color: darkgreen;
 }
-        /* product price style CLOSE */
-    /* product details styel CLOSE */
-/* product card style CLOSE */
 
-/* positions class */
 .leftSwappingWhenNumberOfItemsEqual1
 {
     
