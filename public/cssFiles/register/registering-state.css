@@ -72,3 +72,28 @@
 {
     background-color: transparent;
 }
+
+@media (max-width:1200px) 
+{
+
+    .successful-register
+    {
+        width: 67%;
+    }
+
+    .successful-message-container
+    {
+        width: 580px;
+        height: 580px;
+    }
+      
+    .successful-message-title
+    {
+        font-size: 85px;
+    }
+
+    .successful-message
+    {
+        margin-top: -220px;
+    }
+}
