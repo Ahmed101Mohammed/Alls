@@ -113,3 +113,15 @@
         border:none;
     }
 }
+
+@media (max-width: 540px) 
+{
+    .successful-message-title {
+        font-size: 60px;
+    }  
+    
+    .successful-message
+    {
+        width: 67%;
+    }
+}
