@@ -5,40 +5,6 @@ export const Containers = {
     getAllContainers:()=> document.querySelectorAll('div.category div.container'),
     containersObjects: [],
 
-    createContainerObject: (containerElement,TheStartedIndex,numberOfWantedProducts)=>{
-        let id = containerElement.parentElement.id;
-        Containers.containersObjects[Number(id)] = new Container();
-        Containers.containersObjects[Number(id)].index = TheStartedIndex - 1;
-        Containers.containersObjects[Number(id)].num = numberOfWantedProducts;
-    },
-
-    addTargetProductsToTheContainer: (indexsOfTargetProducts,productsList,theContainer)=>{
-        for(let index = indexsOfTargetProducts.length-1 ; index > -1; index--)
-            {
-                theContainer.innerHTML += productsList[indexsOfTargetProducts[index]];
-            }
-    },
-
-    generateProductsInAllContainers: (TheStartedIndex,numberOfWantedProducts)=>{
-
-        let products = Products.generate20StaticProducts();
-        let indexs = Products.getIndexsOfTargetProducts(TheStartedIndex,numberOfWantedProducts);
-        let allContainers = Containers.getAllContainers();
-        
-        for(let container of allContainers)
-        {
-            Containers.createContainerObject(container,TheStartedIndex,numberOfWantedProducts);
-            container.innerHTML = '';
-            Containers.addTargetProductsToTheContainer(indexs,products,container);
-        }    
-    },
-
-    generateProductsInContainersAndFixTheseWidth: (productsNumber)=>{
-        let theStarterIndex = productsNumber;
-        Containers.generateProductsInAllContainers(theStarterIndex,productsNumber);
-        Products.changeProductsWidthAcordingProductsNumper(productsNumber);
-    },
-
     generateProductsInContainersAccordingWindowWidth: ()=>{
         if(window.innerWidth > 1650)
         {
@@ -78,34 +44,38 @@ export const Containers = {
     
     },
 
-    addProductToTheEndOfAContainer: (productElement,containerElement)=>{
-        containerElement.innerHTML += productElement;
+    generateProductsInContainersAndFixTheseWidth: (productsNumber)=>{
+        let theStarterIndex = productsNumber;
+        Containers.generateProductsInAllContainers(theStarterIndex,productsNumber);
+        Products.changeProductsWidthAcordingProductsNumper(productsNumber);
     },
 
-    addProductToTheStartOfAContainer: (productElement,containerElement)=>{
-        containerElement.innerHTML = productElement + containerElement.innerHTML;
+    generateProductsInAllContainers: (TheStartedIndex,numberOfWantedProducts)=>{
+
+        let products = Products.generate20StaticProducts();
+        let indexs = Products.getIndexsOfTargetProducts(TheStartedIndex,numberOfWantedProducts);
+        let allContainers = Containers.getAllContainers();
+        
+        for(let container of allContainers)
+        {
+            Containers.createContainerObject(container,TheStartedIndex,numberOfWantedProducts);
+            container.innerHTML = '';
+            Containers.addTargetProductsToTheContainer(indexs,products,container);
+        }    
     },
 
-    resizeProductNodeAccordingContainerProductsNumber:(productNode,containerObject)=>{
-        let numberOfProductsInTheContainer = containerObject.num;
-        productNode.style.width = `${ 100 / numberOfProductsInTheContainer }%`;
+    createContainerObject: (containerElement,TheStartedIndex,numberOfWantedProducts)=>{
+        let id = containerElement.parentElement.id;
+        Containers.containersObjects[Number(id)] = new Container();
+        Containers.containersObjects[Number(id)].index = TheStartedIndex - 1;
+        Containers.containersObjects[Number(id)].num = numberOfWantedProducts;
     },
 
-    getElementSwappingClassByContainerProductsNumberandSwappingDirection: (containerProductsNumber,swappingDirection)=>{
-
-        let className = `${swappingDirection}SwappingWhenNumberOfItemsEqual${containerProductsNumber}`;
-        return className;
-    },
-
-    deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection: (theElement,containerProductsNumber,swappingDirection)=>{
-        setTimeout(()=>{
-            let swappingClass = Containers.getElementSwappingClassByContainerProductsNumberandSwappingDirection(containerProductsNumber,swappingDirection);
-            theElement.classList.add(swappingClass);
-        },0);
-        setTimeout(()=>{
-            theElement.style.display = 'none';
-            theElement.remove();
-        },600) 
+    addTargetProductsToTheContainer: (indexsOfTargetProducts,productsList,theContainer)=>{
+        for(let index = indexsOfTargetProducts.length-1 ; index > -1; index--)
+            {
+                theContainer.innerHTML += productsList[indexsOfTargetProducts[index]];
+            }
     },
 
     addNewProductToContainerFromRight: (containerObject, container)=>{
@@ -124,12 +94,15 @@ export const Containers = {
         Containers.deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection(firtProductOfTheContainer,containerProductsNumper,'left');
     },
 
+    addProductToTheEndOfAContainer: (productElement,containerElement)=>{
+        containerElement.innerHTML += productElement;
+    },
+
     addNewProductToContainerFromLeft: (containerObject, container)=>{
 
         let tarqetProductIndex = Products.Math.getNumberFrom0To20(containerObject.index - containerObject.num);
         let targetProduct = Products.getNumberedProductAccordingIndexFrom0To19(tarqetProductIndex);
         Containers.addProductToTheStartOfAContainer(targetProduct, container);
-
         containerObject.addToIndexValue(-1); // decrease the starter index.
 
         let theNewProductAsANode = container.firstChild.nextElementSibling;
@@ -138,7 +111,33 @@ export const Containers = {
         let lastProductOfTheContainer = container.lastChild.previousElementSibling;
         let containerProductsNumper = containerObject.num;
         Containers.deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection(lastProductOfTheContainer,containerProductsNumper,'right');
-    }
+    },
+
+    addProductToTheStartOfAContainer: (productElement,containerElement)=>{
+        containerElement.innerHTML = productElement + containerElement.innerHTML;
+    },
+
+    resizeProductNodeAccordingContainerProductsNumber:(productNode,containerObject)=>{
+        let numberOfProductsInTheContainer = containerObject.num;
+        productNode.style.width = `${ 100 / numberOfProductsInTheContainer }%`;
+    },    
+
+    deleteElementWithSwappingTransitionAccordingContainerProductsNumberAndSwappingDirection: (theElement,containerProductsNumber,swappingDirection)=>{
+        setTimeout(()=>{
+            let swappingClass = Containers.getElementSwappingClassByContainerProductsNumberandSwappingDirection(containerProductsNumber,swappingDirection);
+            theElement.classList.add(swappingClass);
+        },0);
+        setTimeout(()=>{
+            theElement.style.display = 'none';
+            theElement.remove();
+        },600) 
+    },
+
+    getElementSwappingClassByContainerProductsNumberandSwappingDirection: (containerProductsNumber,swappingDirection)=>{
+
+        let className = `${swappingDirection}SwappingWhenNumberOfItemsEqual${containerProductsNumber}`;
+        return className;
+    },
 };
 
 
