@@ -105,3 +105,11 @@
         width: 90%;
     }    
 }
+
+@media (max-width: 700px) 
+{
+    .successful-message-container
+    {
+        border:none;
+    }
+}
