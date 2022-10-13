@@ -140,9 +140,5 @@ export const Containers = {
     },
 };
 
-
-
-window.addEventListener('resize',Containers.generateProductsInContainersAccordingWindowWidth); // set the number of products when the page window resize;
-
-Containers.generateProductsInContainersAccordingWindowWidth(); // set the number of products when page refresh;
-// external:
+window.addEventListener('resize',Containers.generateProductsInContainersAccordingWindowWidth); 
+Containers.generateProductsInContainersAccordingWindowWidth();
