@@ -2,7 +2,6 @@ export const Products = {
     Math: {
         getNumberFrom0To20: (theNumber)=>{
             let number = theNumber % 20;
-            
             if(number < 0)
             {
                 number += 20;
@@ -13,6 +12,7 @@ export const Products = {
     },
 
     allProducts: ()=> document.querySelectorAll('div.category div.container div.product'),
+
     generateProduct: (num)=>{
         return `
                     <!-- product card -->
@@ -37,11 +37,9 @@ export const Products = {
                                 <i class="fa-solid fa-star s5"></i>
                             </div>
 
-                            
                             <span class="avilable">avilable</span>
                             <span class="price">50$</span>
                         </div>
-
                     </div>
                 `
     },   
@@ -49,15 +47,11 @@ export const Products = {
     getIndexsOfTargetProducts: (TheStartedIndex,numOfWantedProducts)=>{
 
         TheStartedIndex = Products.Math.getNumberFrom0To20(TheStartedIndex - 1);
-
         let indexsOfWantedProducts = [];
-
         for(let productNumber = 0; productNumber < numOfWantedProducts; productNumber++)
         {
             TheStartedIndex = Products.Math.getNumberFrom0To20(TheStartedIndex);
-    
-            indexsOfWantedProducts.push(TheStartedIndex);
-    
+            indexsOfWantedProducts.push(TheStartedIndex);    
             TheStartedIndex--;
         }
 
@@ -66,7 +60,6 @@ export const Products = {
 
     generate20StaticProducts: ()=>{
         let products = [];
-    
         for(let productNumber = 0; productNumber < 20; productNumber++)
         {
             products.push(Products.generateProduct(productNumber + 1));
