@@ -46,3 +46,13 @@
     color: #a53f63;
     font-size: 18px;
 }
+
+.btn-try-again
+{
+    background: #f0f0f0;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    color: #ff7c00;
+    font-size: 17px;
+}
