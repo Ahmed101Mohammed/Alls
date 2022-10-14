@@ -103,3 +103,20 @@
         border:none;
     }
 }
+
+@media (max-width: 540px) 
+{
+    .fail-register 
+    {
+        height: 70%;
+    }
+
+    .fail-message-title {
+        font-size: 60px;
+    }  
+    
+    .failur-message
+    {
+        width: 80%;
+    }
+}
