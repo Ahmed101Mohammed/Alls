@@ -1,3 +1,5 @@
+import { moveingMethods } from "../library/movingMethods";
+
 // Opjects:
 let phoneVersion = {
     
@@ -63,14 +65,6 @@ let phoneVersion = {
         }
     }
     
-}
-
-// Dom Elements:
-const signButton = document.querySelector('header div.sign');
-
-//open sign page function
-const openSignPage = ()=>{
-    window.open('/sign','_self')
 } 
 
 // Add hover ListenerEvent for navParControllerInPhoneVersion element:
@@ -81,7 +75,8 @@ phoneVersion.navParButton.htmlElement.addEventListener('mouseout',phoneVersion.n
 phoneVersion.navParButton.htmlElement.addEventListener('click',phoneVersion.appearAndDisappearTheNavPar);
 
 // Add click listenerEvent for sign button:
-signButton.addEventListener('click',openSignPage)
+const signButton = document.querySelector('header div.sign');
+signButton.addEventListener('click',moveingMethods.moveToSignPage)
 
 // Add click listenerEvent for sign button in phone version:
 phoneVersion.navPar.signButton.addEventListener('click',openSignPage)
