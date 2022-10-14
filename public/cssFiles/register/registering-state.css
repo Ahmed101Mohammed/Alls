@@ -8,3 +8,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.register-message-cover
+{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50px;
+}
