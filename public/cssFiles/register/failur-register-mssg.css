@@ -87,3 +87,11 @@
         margin-top: -220px;
     }
 }
+
+@media (max-width: 900px) 
+{
+    .fail-register
+    {
+        width: 90%;
+    }    
+}
