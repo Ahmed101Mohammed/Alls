@@ -49,3 +49,13 @@
     margin-top: -298px;
     font-size: 18px;
 }
+
+.btn
+{
+    background: #f0f0f0;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    color: #ff7c00;
+    font-size: 17px;
+}
