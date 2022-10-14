@@ -59,3 +59,8 @@
     color: #ff7c00;
     font-size: 17px;
 }
+
+.btn:hover
+{
+    background-color: transparent;
+}
