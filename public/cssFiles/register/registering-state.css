@@ -27,6 +27,7 @@
     border-radius: 50%;
     display: flex;
     justify-content: center;
+    border: 21px #00803c00 solid;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -92,7 +93,7 @@
 
 @media (max-width: 900px) 
 {
-    .register
+    .register-message-cover
     {
         width: 90%;
     }    

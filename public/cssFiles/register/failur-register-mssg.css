@@ -5,15 +5,15 @@
 
 .message-container-failurColor
 {
-    border: 21px #e51532 solid;
+    border-color: #e51532;
 }
 
-.message-title--failurColor
+.message-title-failurColor
 {
     color: #800027;
 }
 
-.message--failurColor
+.message-failurColor
 {
     color: #a53f63;
 }
