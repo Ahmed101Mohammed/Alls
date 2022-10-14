@@ -25,3 +25,13 @@
     border: 21px #e51532 solid;
     flex-wrap: wrap;
 }
+
+.fail-message-title
+{
+    display: block;
+    width: 100%;
+    font-size: 100px;
+    text-align: center;
+    color: #800027;
+    font-family: sans-serif;
+}
