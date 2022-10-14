@@ -61,3 +61,29 @@
 {
     background-color: transparent;
 }
+
+
+@media (max-width:1200px) 
+{
+
+    .fail-register
+    {
+        width: 67%;
+    }
+
+    .fail-message-container
+    {
+        width: 580px;
+        height: 580px;
+    }
+      
+    .fail-message-title
+    {
+        font-size: 85px;
+    }
+
+    .failur-message
+    {
+        margin-top: -220px;
+    }
+}
