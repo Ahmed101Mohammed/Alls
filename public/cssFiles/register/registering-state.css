@@ -64,3 +64,68 @@
 {
     background-color: transparent;
 }
+
+@media (max-width:1200px) 
+{
+
+    .register-message-cover
+    {
+        width: 67%;
+    }
+
+    .message-container
+    {
+        width: 580px;
+        height: 580px;
+    }
+      
+    .message-title
+    {
+        font-size: 85px;
+    }
+
+    .message
+    {
+        margin-top: -220px;
+    }
+}
+
+@media (max-width: 900px) 
+{
+    .register
+    {
+        width: 90%;
+    }    
+}
+
+@media (max-width: 700px) 
+{
+    .message-container
+    {
+        border:none;
+    }
+}
+
+@media (max-width: 540px) 
+{
+    .register 
+    {
+        height: 70%;
+    }
+
+    .message-title {
+        font-size: 60px;
+    }  
+    
+    .message
+    {
+        width: 80%;
+    }
+}
+
+@media (max-width: 350px) 
+{
+    .message-title {
+        font-size: 35px;
+    }  
+}
