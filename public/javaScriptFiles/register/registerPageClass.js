@@ -8,6 +8,7 @@ function RegisterPage()
         let response = await this.postUserDataInRegisterRoute(userRegisterData);
         this.getResponseMessageInString(response);
         this.appearErrorMessageAccordingErrorType(response);
+        this.appearSuccessfulOrFieledRigistringMessages(response);
     }
 
     this.prapereTheUserRegisterData = () =>
@@ -137,18 +138,20 @@ function RegisterPage()
         },600)
     }        
 
-    this.appearSuccessfulAndFieledRigistringMessages = (responseMessage) =>
+    this.appearSuccessfulOrFieledRigistringMessages = (responseMessage) =>
     {
-        let responseMessageInString = this.getResponseMessageInString(responseMessage);
-
+        let registeringStateElement = document.querySelector('.registering-state');
         if('serverError' in responseMessage)
         {
-                
+            let failurMessage = document.querySelector('.message-container-failurColor');
+            registeringStateElement.classList.remove('none');
+            failurMessage.classList.remove('none');
         }
-
         else if('successRegister' in responseMessage)
         {
-
+            let successfulMessage = document.querySelector('.message-container-successfulColor');
+            registeringStateElement.classList.remove('none');
+            successfulMessage.classList.remove('none');
         }
     }       
 
