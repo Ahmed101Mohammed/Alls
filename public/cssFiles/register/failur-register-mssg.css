@@ -3,61 +3,17 @@
     background-color: #af8c4c;
 }
 
-.fail-register
+.message-container-failurColor
 {
-    width: 60%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 50px;
-}
-
-.fail-message-container
-{
-    width: 678px;
-    height: 678px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 21px #e51532 solid;
-    flex-wrap: wrap;
 }
 
-.fail-message-title
+.message-title--failurColor
 {
-    display: block;
-    width: 100%;
-    font-size: 100px;
-    text-align: center;
     color: #800027;
-    font-family: sans-serif;
 }
 
-.failur-message
+.message--failurColor
 {
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-family: sans-serif;
-    margin-top: -298px;
     color: #a53f63;
-    font-size: 18px;
-}
-
-.btn-try-again
-{
-    background: #f0f0f0;
-    border: none;
-    padding: 20px;
-    cursor: pointer;
-    color: #ff7c00;
-    font-size: 17px;
-}
-
-.btn-try-again:hover
-{
-    background-color: transparent;
 }
