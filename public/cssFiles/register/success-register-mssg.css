@@ -3,62 +3,17 @@
     background-color: #4caf50;
 }
 
-.successful-register
+.message-container-successfulColor
 {
-    width: 60%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 50px;
-}
-
-.successful-message-container
-{
-    width: 678px;
-    height: 678px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 21px #00803b solid;
-    flex-wrap: wrap;
 }
 
-.successful-message-title
+.message-title-successfulColor
 {
-    display: block;
-    width: 100%;
-    font-size: 100px;
-    text-align: center;
     color: green;
-    font-family: sans-serif;
 }
 
-.successful-message
+.message-successfulColor
 {
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-family: sans-serif;
-    margin-top: -298px;
     color: #3fa554;
-    font-size: 18px;
 }
-
-.btn-move-to-sign-page
-{
-    background: #f0f0f0;
-    border: none;
-    padding: 20px;
-    cursor: pointer;
-    color: #ff7c00;
-    font-size: 17px;
-}
-
-.btn-move-to-sign-page:hover
-{
-    background-color: transparent;
-}
-
