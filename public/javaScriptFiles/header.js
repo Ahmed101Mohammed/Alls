@@ -1,4 +1,4 @@
-import { moveingMethods } from "../library/movingMethods";
+import { moveingMethods } from "../library/movingMethods.js";
 
 // Opjects:
 let phoneVersion = {
@@ -79,4 +79,4 @@ const signButton = document.querySelector('header div.sign');
 signButton.addEventListener('click',moveingMethods.moveToSignPage)
 
 // Add click listenerEvent for sign button in phone version:
-phoneVersion.navPar.signButton.addEventListener('click',openSignPage)
+phoneVersion.navPar.signButton.addEventListener('click',moveingMethods.moveToSignPage)
