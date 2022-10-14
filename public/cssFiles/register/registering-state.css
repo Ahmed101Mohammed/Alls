@@ -30,3 +30,12 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+.message-title
+{
+    display: block;
+    width: 100%;
+    font-size: 100px;
+    text-align: center;
+    font-family: sans-serif;
+}
