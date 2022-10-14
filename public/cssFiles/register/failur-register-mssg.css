@@ -13,3 +13,15 @@
     background-color: white;
     border-radius: 50px;
 }
+
+.fail-message-container
+{
+    width: 678px;
+    height: 678px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 21px #e51532 solid;
+    flex-wrap: wrap;
+}
