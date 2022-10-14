@@ -129,3 +129,9 @@
         font-size: 35px;
     }  
 }
+
+/* special style */
+.none
+{
+    display: none;
+}
