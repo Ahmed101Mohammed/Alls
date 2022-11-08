@@ -1,3 +1,5 @@
+import FormErrorsRender from "../../library/Form-error-render.js";
+
 function RegisterPage()
 {
     this.registerButton = document.querySelector('fieldset.register div.register'),
@@ -7,7 +9,10 @@ function RegisterPage()
         let userRegisterData = this.prapereTheUserRegisterData();
         let response = await this.postUserDataInRegisterRoute(userRegisterData);
         this.getResponseMessageInString(response);
-        this.appearErrorMessageAccordingErrorType(response);
+
+        let formErrorRenderOpject = new FormErrorsRender(response);
+        formErrorRenderOpject.appearErrorMessageAccordingErrorType();
+
         this.appearSuccessfulOrFieledRigistringMessages(response);
     }
 
@@ -75,69 +80,6 @@ function RegisterPage()
         return errorMessageString
     }
 
-    this.appearErrorMessageAccordingErrorType = (errorMessage) =>
-    {
-        let lastErrorElement = this.getLastErrorMessageElement();
-        if(lastErrorElement) lastErrorElement.remove();
-
-        let errorElement = this.cteateErrorElement(errorMessage);
-                    
-        let theParentElementOfErrorElement = this.getFieldsetThatCausedTheError(errorMessage);
-        if(!theParentElementOfErrorElement) return;
-
-        this.addTheErrorElementToTheFieldsetElement(errorElement,theParentElementOfErrorElement);
-    }
-
-    this.getLastErrorMessageElement = () =>
-    {
-        return document.querySelector("form .errorMessageSecondApearance");
-    }
-        
-    this.cteateErrorElement = (errorMessage) =>
-    {
-        let errorElement = document.createElement("div");
-        errorElement.classList.add("errorMessageFirstApearance");
-        let errorMessageString = this.getResponseMessageInString(errorMessage);
-        errorElement.textContent = errorMessageString;
-
-        return errorElement;
-    }
-
-    this.getFieldsetThatCausedTheError = (errorMessage)=>
-    {
-        let theFieldsetThatCausedTheError;
-
-        if("userNameError" in errorMessage)
-        {
-            theFieldsetThatCausedTheError = document.querySelector('fieldset.user-name');    
-        }
-        else if("passwordError" in errorMessage)
-        {
-            theFieldsetThatCausedTheError = document.querySelector('fieldset.pssw');
-        }
-        else if("emailError" in errorMessage)
-        {    
-           theFieldsetThatCausedTheError = document.querySelector('fieldset.email');
-        }
-
-        return theFieldsetThatCausedTheError;
-    }
-
-
-    this.addTheErrorElementToTheFieldsetElement = (errorElement, fieldsetElement) =>
-    {
-        fieldsetElement.appendChild(errorElement);
-        let errorElementContent = errorElement.textContent;
-        errorElement.textContent = "";
-
-        setTimeout(()=>{
-            errorElement.classList.add('errorMessageSecondApearance');
-        },0)
-        setTimeout(()=>{
-            errorElement.textContent = errorElementContent;
-        },600)
-    }        
-
     this.appearSuccessfulOrFieledRigistringMessages = (responseMessage) =>
     {
         let registeringStateElement = document.querySelector('.registering-state');
@@ -159,3 +101,6 @@ function RegisterPage()
 
 let myRegisterPage = new RegisterPage();
 myRegisterPage.registerButton.addEventListener('click',myRegisterPage.sendUserRegisterDataToTheServer);
+
+
+export default RegisterPage;
