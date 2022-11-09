@@ -20,3 +20,5 @@ const signToMyAccount = (req, res)=>
     return res.json({'succesfulAuthintication' : 'Congrateulation You are in'})
     
 }
+
+module.exports = signToMyAccount;
