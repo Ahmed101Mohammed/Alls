@@ -4,8 +4,8 @@ const UserSchema = require(path.join(__dirname,'..','model','User.js'));
 
 // object:
 const database = {
-    isTheUserNameDublicated: async(registerUserNameData)=>{
-        let isItExist = await UserSchema.findOne(registerUserNameData).then(user=>{
+    isTheUserNameDublicated: async(userName)=>{
+        let isItExist = await UserSchema.findOne(userName).then(user=>{
 
             if(user !== null)
             {
@@ -30,7 +30,25 @@ const database = {
 
         return false;
 
-    }
+    },
+
+    isThePasswordOfTheUserNameIsARight: async(password, userName)=>
+    {
+        let passwordFromDB = await UserSchema.findOne(userName).then(user => {
+            return user.password;
+        });
+
+        try
+        {
+
+        }
+        catch(e)
+        {
+
+        }
+    },
+
+    
 }
 
 // exports:
