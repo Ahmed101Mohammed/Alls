@@ -1,6 +1,7 @@
 // models:
 const path = require('path');
 const UserSchema = require(path.join(__dirname,'..','model','User.js'));
+const bcrypt = reuire('bcrypt');
 
 // object:
 const database = {
@@ -38,17 +39,9 @@ const database = {
             return user.password;
         });
 
-        try
-        {
-
-        }
-        catch(e)
-        {
-
-        }
+        
     },
 
-    
 }
 
 // exports:
