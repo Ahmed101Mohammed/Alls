@@ -29,6 +29,11 @@ const signToMyAccount = async(req, res)=>
             {expiresIn: '30s'}
         )
 
+        const refreshTocken = jwt.sign(
+            { userName: userName },
+            process.env.REFRESH_TOCKEN_SECRET,
+            {expiresIn: '2m'}
+        )
     }
     catch(e)
     {}
