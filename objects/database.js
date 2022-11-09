@@ -1,7 +1,7 @@
 // models:
 const path = require('path');
 const UserSchema = require(path.join(__dirname,'..','model','User.js'));
-const bcrypt = reuire('bcrypt');
+const bcrypt = require('bcrypt');
 
 // object:
 const database = {
