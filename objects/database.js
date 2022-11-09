@@ -39,7 +39,7 @@ const database = {
             return user.password;
         });
 
-        
+        return database.compareHashingPasswordWithNormalOne(passwordFromDB, password);   
     },
 
     compareHashingPasswordWithNormalOne: async(hashingPassword, normalPassword)=>
