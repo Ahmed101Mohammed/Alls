@@ -1,5 +1,7 @@
 let path = require('path');
 let databaseObject = require(path.join(__dirname, '..', 'objects', 'database.js'));
+let jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const signToMyAccount = async(req, res)=>
 {
@@ -18,6 +20,18 @@ const signToMyAccount = async(req, res)=>
     {
         return dataIsRigt;
     }
+
+    try
+    {
+        const accessTocken = jwt.sign(
+            { userName: userName },
+            process.env.ACCESS_TOCKEN_SECRET,
+            {expiresIn: '30s'}
+        )
+
+    }
+    catch(e)
+    {}
 
     return res.json({'succesfulAuthintication' : 'Congrateulation You are in'})
     
