@@ -15,7 +15,7 @@ const database = {
         });
 
         if(isItExist) return true;
-
+        console.log('hi') // test
         return false;
     },
 
@@ -30,7 +30,6 @@ const database = {
         if(isItExist) return true;
 
         return false;
-
     },
 
     isThePasswordOfTheUserNameIsARight: async(password, userName)=>
@@ -46,13 +45,22 @@ const database = {
     {
         try
         {
-            let areTheySimilar = bcrypt.compare(hashingPassword, normalPassword);
+            let areTheySimilar = bcrypt.compare(normalPassword, hashingPassword);
             return areTheySimilar;
         }
         catch(e)
         {
             return {"passwordError": "Failed to compare the enter password with the real password."};
         }
+    },
+
+    getUserData: async(userName) =>
+    {
+        let userData = await UserSchema.findOne(userName).then( user => {
+            return user
+        })
+
+        return userData;
     }
 }
 
