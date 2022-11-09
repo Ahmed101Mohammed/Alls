@@ -42,6 +42,18 @@ const database = {
         
     },
 
+    compareHashingPasswordWithNormalOne: async(hashingPassword, normalPassword)=>
+    {
+        try
+        {
+            let areTheySimilar = bcrypt.compare(hashingPassword, normalPassword);
+            return areTheySimilar;
+        }
+        catch(e)
+        {
+            return {"passwordError": "Failed to compare the enter password with the real password."};
+        }
+    }
 }
 
 // exports:
