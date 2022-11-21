@@ -44,7 +44,7 @@
                 <mxCell id="20" value="List" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=20;" vertex="1" parent="18">
                     <mxGeometry x="100" y="60" width="235" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="CreateContainer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=20;" vertex="1" parent="20">
+                <mxCell id="21" value="Constructor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=20;" vertex="1" parent="20">
                     <mxGeometry y="30" width="235" height="30" as="geometry"/>
                 </mxCell>
             </root>
