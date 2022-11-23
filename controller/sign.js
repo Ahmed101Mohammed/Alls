@@ -18,7 +18,7 @@ const signToMyAccount = async(req, res)=>
     }
     else if(typeof(dataIsRigt) === Object)
     {
-        return dataIsRigt;
+        return res.send(dataIsRigt);
     }
 
     try
@@ -27,16 +27,24 @@ const signToMyAccount = async(req, res)=>
             { userName: userName },
             process.env.ACCESS_TOCKEN_SECRET,
             {expiresIn: '30s'}
-        )
+        );
 
         const refreshTocken = jwt.sign(
             { userName: userName },
             process.env.REFRESH_TOCKEN_SECRET,
-            {expiresIn: '2m'}
-        )
+            {expiresIn: '5m'}
+        );
+
+        let userData = await databaseObject.getUserData({userName});
+        userData.refreshTocken = refreshTocken;
+        userData.save();
+
+        return res.cookie('jwt', refreshTocken, {httpOnly: true, maxAge: 5 * 60 * 1000}).json({accessTocken});
     }
     catch(e)
-    {}
+    {
+        res.sendStatus(401);
+    }
 
     return res.json({'succesfulAuthintication' : 'Congrateulation You are in'})
     
