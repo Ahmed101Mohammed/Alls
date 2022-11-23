@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const verifyJWT = require('./middlewares/verifyJWT.js');
 const dataBase =  require(path.join(__dirname,'database','mongoDB.js'));
 // server:
 const app = express();
@@ -24,7 +25,7 @@ app.use(require('./middlewares/readReqs.js'));
 app.use(require(path.join(__dirname,'routers','home.js')));
 app.use('/sign',require(path.join(__dirname,'routers','sign.js')));
 app.use('/register',require(path.join(__dirname,'routers','register.js')));
-
+app.use(verifyJWT)
 // run server:
 const port = process.env.PORT || 8000;
 server.listen(port,()=>{

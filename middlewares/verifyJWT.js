@@ -5,7 +5,6 @@ const verifyJWT = (req, res, next)=>
 {
     const authHeader = req.headers['authorization'];
     if(!authHeader) return res.sendStatus(401);
-    console.log(authHeader);
 
     let accessTocken = authHeader.split(' ')[1];
     jwt.verify(
@@ -14,7 +13,7 @@ const verifyJWT = (req, res, next)=>
         (error, decouded) =>
         {
             if(error) return res.sendStatus(403);
-            req.user = decouded.userName;
+            req.userName = decouded.userName;
             next();
         }
     )
