@@ -54,6 +54,16 @@ const database = {
         }
     },
 
+    compareUserRefreshTockenWithOther: async(userName, refreshTocken)=>
+    {
+        let isTheUserRefreshTockenEqualTheOtherRefreshTocken = await UserSchema.findOne({userName}).then(user =>
+            {
+                if(user.refreshTocken === refreshTocken) return true;
+                return false;
+            });
+        return isTheUserRefreshTockenEqualTheOtherRefreshTocken;
+    },
+
     getUserData: async(userName) =>
     {
         let userData = await UserSchema.findOne(userName).then( user => {
