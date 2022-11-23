@@ -61,6 +61,20 @@ const database = {
         })
 
         return userData;
+    },
+
+    updateUserData: async(userName, dataWantToUpdate, value)=>{
+        try
+        {
+            let userData = await databaseObject.getUserData({userName});
+            userData[dataWantToUpdate] = value;
+            userData.save();
+        }
+        catch(e)
+        {
+            return {'fieldUpdatingData': `Field to update ${dataWantToUpdate} of the user to ${value}`}
+        }        
+
     }
 }
 
